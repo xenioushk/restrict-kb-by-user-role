@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Restrict KB Access By User Role\n"
+"POT-Creation-Date: 2020-05-05 23:12+0600\n"
+"PO-Revision-Date: 2020-05-05 23:13+0600\n"
+"Last-Translator: \n"
+"Language-Team: BlueWindLab <hkhan.cse@gmail.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: _e;__;_n\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../admin/class-rkb-addon-admin.php:140
+msgid "Access"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:161
+msgid "All types of user can view this KB content"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:167
+msgid "only administrator can access this KB"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:170
+msgid "only"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:170
+msgid "can access this KB"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:202
+msgid "Restrict Access"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:204
+#: ../admin/class-rkb-addon-admin.php:283
+msgid "- No Change -"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:205
+#: ../admin/class-rkb-addon-admin.php:284
+#: ../admin/includes/class-rkb-addon-meta-box.php:256
+msgid "Yes"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:206
+#: ../admin/class-rkb-addon-admin.php:285
+#: ../admin/includes/class-rkb-addon-meta-box.php:255
+msgid "No"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:281
+msgid "Restrict Access?"
+msgstr ""
+
+#: ../admin/class-rkb-addon-admin.php:358
+msgid "Select Role "
+msgstr ""
+
+#: ../admin/includes/class-rkb-addon-meta-box.php:244
+msgid "BKB Access Restriction Settings"
+msgstr ""
+
+#: ../admin/includes/class-rkb-addon-meta-box.php:250
+msgid "Restrict KB content access?"
+msgstr ""
+
+#: ../admin/includes/class-rkb-addon-meta-box.php:262
+msgid "Select user roles you want to give access: "
+msgstr ""
+
+#: ../admin/includes/class-rkb-addon-meta-box.php:270
+msgid "Administrator always able to access all the KB items"
+msgstr ""
+
+#: ../public/class-rkb-addon.php:473
+msgid "Sorry, you are not allowed to access the knowledgebase content."
+msgstr ""
+
+#: ../public/class-rkb-addon.php:474
+msgid "Log In"
+msgstr ""
+
+#: ../public/class-rkb-addon.php:474
+msgid "required to access the content"
+msgstr ""
