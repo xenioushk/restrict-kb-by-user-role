@@ -18,37 +18,10 @@ class BKB_Rkb
      */
     const VERSION = '1.0.1';
 
-    /**
-     * @TODO - Rename "plugin-name" to the name your your plugin
-     *
-     * Unique identifier for your plugin.
-     *
-     *
-     * The variable name is used as the text domain when internationalizing strings
-     * of text. Its value should match the Text Domain file header in the main
-     * plugin file.
-     *
-     * @since    1.0.0
-     *
-     * @var      string
-     */
     protected $plugin_slug = 'bkb-rkb';
 
-    /**
-     * Instance of this class.
-     *
-     * @since    1.0.0
-     *
-     * @var      object
-     */
     protected static $instance = null;
 
-    /**
-     * Initialize the plugin by setting localization and loading public scripts
-     * and styles.
-     *
-     * @since     1.0.0
-     */
     private function __construct()
     {
 
@@ -61,14 +34,8 @@ class BKB_Rkb
             add_filter('bkb_rkb_query_filter', array($this,  'bkb_rkb_query_filter'));
             add_filter('bkb_rkb_blog_query_filter', array($this,  'bkb_rkb_blog_query_filter'));
             add_filter('bkb_rkb_search_query_filter', array($this,  'bkb_rkb_search_query_filter'));
-
-            //                           
-
         }
     }
-
-
-
 
 
     public function include_files()
@@ -77,27 +44,11 @@ class BKB_Rkb
         require_once(BKBRKB_DIR . 'public/includes/bkb-rkb-helpers.php');
     }
 
-
-
-    /**
-     * Return the plugin slug.
-     *
-     * @since    1.0.0
-     *
-     *@return    Plugin slug variable.
-     */
     public function get_plugin_slug()
     {
         return $this->plugin_slug;
     }
 
-    /**
-     * Return an instance of this class.
-     *
-     * @since     1.0.0
-     *
-     * @return    object    A single instance of this class.
-     */
     public static function get_instance()
     {
 
@@ -109,16 +60,6 @@ class BKB_Rkb
         return self::$instance;
     }
 
-    /**
-     * Fired when the plugin is activated.
-     *
-     * @since    1.0.0
-     *
-     * @param    boolean    $network_wide    True if WPMU superadmin uses
-     *                                       "Network Activate" action, false if
-     *                                       WPMU is disabled or plugin is
-     *                                       activated on an individual blog.
-     */
     public static function activate($network_wide)
     {
 
@@ -144,16 +85,7 @@ class BKB_Rkb
         }
     }
 
-    /**
-     * Fired when the plugin is deactivated.
-     *
-     * @since    1.0.0
-     *
-     * @param    boolean    $network_wide    True if WPMU superadmin uses
-     *                                       "Network Deactivate" action, false if
-     *                                       WPMU is disabled or plugin is
-     *                                       deactivated on an individual blog.
-     */
+
     public static function deactivate($network_wide)
     {
 
@@ -179,13 +111,7 @@ class BKB_Rkb
         }
     }
 
-    /**
-     * Fired when a new site is activated with a WPMU environment.
-     *
-     * @since    1.0.0
-     *
-     * @param    int    $blog_id    ID of the new blog.
-     */
+
     public function activate_new_site($blog_id)
     {
 
@@ -198,16 +124,7 @@ class BKB_Rkb
         restore_current_blog();
     }
 
-    /**
-     * Get all blog ids of blogs in the current network that are:
-     * - not archived
-     * - not spam
-     * - not deleted
-     *
-     * @since    1.0.0
-     *
-     * @return   array|false    The blog ids, false if no matches.
-     */
+
     private static function get_blog_ids()
     {
 
@@ -221,31 +138,17 @@ class BKB_Rkb
         return $wpdb->get_col($sql);
     }
 
-    /**
-     * Fired for each blog when the plugin is activated.
-     *
-     * @since    1.0.0
-     */
     private static function single_activate()
     {
         // @TODO: Define activation functionality here
     }
 
-    /**
-     * Fired for each blog when the plugin is deactivated.
-     *
-     * @since    1.0.0
-     */
     private static function single_deactivate()
     {
         // @TODO: Define deactivation functionality here
     }
 
-    /**
-     * Load the plugin text domain for translation.
-     *
-     * @since    1.0.0
-     */
+
     public function load_plugin_textdomain()
     {
 
@@ -266,10 +169,6 @@ class BKB_Rkb
 
     public function bkb_rkb_query_filter($args)
     {
-        //             
-        //                 echo "<pre>";
-        //                 print_r($args);
-        //                 echo "</pre>";
 
         global $bkb_data;
 
@@ -386,8 +285,6 @@ class BKB_Rkb
 
         global $post, $bkb_data;
 
-        //                    return $content;
-
         if (!is_admin() && is_tax('bkb_category') && isset($bkb_data['bkb_cat_default_tpl_ordering_status']['enabled']) && $bkb_data['bkb_cat_default_tpl_ordering_status']['enabled'] == 'on') {
 
             $bkb_rkb_post_access_result = apply_filters('bkb_rkb_post_access', $post->ID);
@@ -485,11 +382,6 @@ class BKB_Rkb
             return $bkb_kbdabp_excluded_posts;
         }
 
-        //                   echo "Display";
-
-        //                   else if (isset($bkb_data['bkb_rkb_all_kb_display_status']) && $bkb_data['bkb_rkb_all_kb_display_status'] == "1") {
-        //                        return $bkb_kbdabp_excluded_posts;
-        //                   } else {
 
         $args = array(
             'post_status' => 'publish',
@@ -570,10 +462,6 @@ class BKB_Rkb
 
     public function bkb_rkb_search_query_filter($rkb_query_vars)
     {
-
-        //                   echo "<pre>";
-        //                   print_r($querystr);
-        //                   echo "</pre>";
 
 
         global $wpdb;

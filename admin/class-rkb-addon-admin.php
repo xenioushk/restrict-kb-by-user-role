@@ -2,53 +2,26 @@
 if (!defined('WPINC')) {
     die;
 }
-/**
- * Plugin class. This class should ideally be used to work with the
- * administrative side of the WordPress site.
- *
- * If you're interested in introducing public-facing
- * functionality, then refer to `class-plugin-name.php`
- *
- * @TODO: Rename this class to a proper name for your plugin.
 
- */
-class BKB_Rkb_Admin {
+class BKB_Rkb_Admin
+{
 
-    /**
-     * Instance of this class.
-     *
-     * @since    1.0.0
-     *
-     * @var      object
-     */
+
     protected static $instance = null;
 
-    /**
-     * Slug of the plugin screen.
-     *
-     * @since    1.0.0
-     *
-     * @var      string
-     */
+    public $plugin_slug;
     protected $plugin_screen_hook_suffix = null;
 
-    /**
-     * Initialize the plugin by loading admin scripts & styles and adding a
-     * settings page and menu.
-     *
-     * @since     1.0.0
-     */
-    private function __construct() {
 
-        
-        //@Description: First we need to check if KB Plugin is activated or not. If not then we display a message and return false.
-        //@Since: Version 1.0.5
-        
-        if( ! class_exists( 'BWL_KB_Manager' ) || BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION < '1.0.5' ) {
+    private function __construct()
+    {
+
+
+        if (!class_exists('BwlKbManager\\Init') || BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION < '1.0.5') {
             add_action('admin_notices', array($this, 'rkb_version_update_admin_notice'));
             return false;
         }
-        
+
         $plugin = BKB_rkb::get_instance();
         $this->plugin_slug = $plugin->get_plugin_slug();
         $post_types = 'bwl_kb';
@@ -70,12 +43,11 @@ class BKB_Rkb_Admin {
 
         // Load public-facing style sheet and JavaScript.
         add_action('admin_enqueue_scripts', array($this, 'bkb_rkb_admin_enqueue_scripts'));
-        
-        
+
+
         /*------------------------------  Custom Filter For User Role---------------------------------*/
-        add_action( 'restrict_manage_posts', array($this, 'bkb_rkb_admin_top_user_role_filter'), 11 );
-        add_filter( 'parse_query', array($this, 'cb_bkb_rkb_admin_top_user_role_filter'), 11 );
-        
+        add_action('restrict_manage_posts', array($this, 'bkb_rkb_admin_top_user_role_filter'), 11);
+        add_filter('parse_query', array($this, 'cb_bkb_rkb_admin_top_user_role_filter'), 11);
     }
 
 
@@ -86,7 +58,8 @@ class BKB_Rkb_Admin {
      *
      * @return    object    A single instance of this class.
      */
-    public static function get_instance() {
+    public static function get_instance()
+    {
 
         /*
          * @TODO :
@@ -104,15 +77,15 @@ class BKB_Rkb_Admin {
 
         return self::$instance;
     }
-    
-     //Version Manager:  Update Checking
-    
-    public function rkb_version_update_admin_notice(){
-        
+
+    //Version Manager:  Update Checking
+
+    public function rkb_version_update_admin_notice()
+    {
+
         echo '<div class="updated"><p>You need to download & install '
             . '<b><a href="https://1.envato.market/bkbm-wp" target="_blank">BWL Knowledge Base Manager Plugin</a></b> '
             . 'to use <b>Restrict KB Access by User Role  - Knowledgebase Addon</b>.</p></div>';
-        
     }
 
     /**
@@ -120,29 +93,31 @@ class BKB_Rkb_Admin {
      *
      * @since    1.0.0
      */
-    public function bkb_rkb_admin_enqueue_scripts( $hook ) {
-        
-         if ( 'edit.php' == $hook && isset($_GET['post_type']) && $_GET['post_type'] == "bwl_kb" ) {
-    
+    public function bkb_rkb_admin_enqueue_scripts($hook)
+    {
+
+        if ('edit.php' == $hook && isset($_GET['post_type']) && $_GET['post_type'] == "bwl_kb") {
+
             wp_enqueue_script($this->plugin_slug . '-admin-custom-script', plugins_url('assets/js/bkb_rkb-admin-scripts.js', __FILE__), array('jquery'), BKB_Rkb::VERSION, TRUE);
-            
         } else {
-            
+
             return;
-            
         }
-        
     }
 
-    function bkb_rkb_custom_column_header($columns) {
+    function bkb_rkb_custom_column_header($columns)
+    {
 
-        return array_merge($columns, array(
-            'bkb_rkb_status' => __('Access', 'bkb_rkb')
-                )
+        return array_merge(
+            $columns,
+            array(
+                'bkb_rkb_status' => __('Access', 'bkb_rkb')
+            )
         );
     }
 
-    function bkb_rkb_display_custom_column($column) {
+    function bkb_rkb_display_custom_column($column)
+    {
 
         // Add A Custom Image Size For Admin Panel.
 
@@ -152,27 +127,26 @@ class BKB_Rkb_Admin {
 
             case 'bkb_rkb_status':
 
-                $bkb_rkb_status = ( get_post_meta($post->ID, "bkb_rkb_status", true) == 1 ) ? 1 : 0;
+                $bkb_rkb_status = (get_post_meta($post->ID, "bkb_rkb_status", true) == 1) ? 1 : 0;
 
                 // FAQ Display Status In Text.
 
-                $bkb_rkb_status_in_text = ( $bkb_rkb_status == 1 ) ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-unlock"></i>';
-                
+                $bkb_rkb_status_in_text = ($bkb_rkb_status == 1) ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-unlock"></i>';
+
                 $bkb_rkb_user_roles_access_text = __("All types of user can view this KB content", 'bkb_rkb');
-                
-                if( $bkb_rkb_status == 1 ) {
+
+                if ($bkb_rkb_status == 1) {
                     $bkb_rkb_user_roles_titles = get_post_meta($post->ID, 'bkb_rkb_user_roles', true);
-            
-                    if( ! is_array($bkb_rkb_user_roles_titles) ) {
+
+                    if (!is_array($bkb_rkb_user_roles_titles)) {
                         $bkb_rkb_user_roles_access_text = __('only administrator can access this KB', 'bkb_rkb');
                     } else {
                         $bkb_roles = implode(', ', $bkb_rkb_user_roles_titles);
-                        $bkb_rkb_user_roles_access_text = __('only', 'bkb_rkb') ." ". $bkb_roles . " ".__('can access this KB', 'bkb_rkb');
+                        $bkb_rkb_user_roles_access_text = __('only', 'bkb_rkb') . " " . $bkb_roles . " " . __('can access this KB', 'bkb_rkb');
                     }
-                    
                 }
 
-                echo '<div style="cursor: help;" id="bkb_rkb_status-' . $post->ID . '" data-status_code="' . $bkb_rkb_status . '" title="'. ucwords($bkb_rkb_user_roles_access_text).'">' . $bkb_rkb_status_in_text . '</div>';
+                echo '<div style="cursor: help;" id="bkb_rkb_status-' . $post->ID . '" data-status_code="' . $bkb_rkb_status . '" title="' . ucwords($bkb_rkb_user_roles_access_text) . '">' . $bkb_rkb_status_in_text . '</div>';
 
                 break;
         }
@@ -180,7 +154,8 @@ class BKB_Rkb_Admin {
 
     /* ------------------------------ Bulk & Quick Edit Section --------------------------------- */
 
-    function bkb_rkb_product_quick_edit_box($column_name, $post_type) {
+    function bkb_rkb_product_quick_edit_box($column_name, $post_type)
+    {
 
         global $post;
 
@@ -192,8 +167,8 @@ class BKB_Rkb_Admin {
 
                     case 'bkb_rkb_status':
 
-                        $bkb_rkb_status = ( get_post_meta($post->ID, "bkb_rkb_status", true) == "" ) ? "" : get_post_meta($post->ID, "bkb_rkb_status", true);
-                        ?>
+                        $bkb_rkb_status = (get_post_meta($post->ID, "bkb_rkb_status", true) == "") ? "" : get_post_meta($post->ID, "bkb_rkb_status", true);
+?>
 
                         <fieldset class="inline-edit-col-right">
                             <div class="inline-edit-col">
@@ -212,7 +187,7 @@ class BKB_Rkb_Admin {
                         </fieldset>
 
 
-                        <?php
+                    <?php
                         break;
                 }
 
@@ -220,7 +195,8 @@ class BKB_Rkb_Admin {
         }
     }
 
-    function bkb_rkb_product_save_quick_edit_data($post_id, $post) {
+    function bkb_rkb_product_save_quick_edit_data($post_id, $post)
+    {
 
         // pointless if $_POST is empty (this happens on bulk edit)
         if (empty($_POST))
@@ -261,7 +237,8 @@ class BKB_Rkb_Admin {
         }
     }
 
-    function bkb_rkb_product_bulk_edit_box($column_name, $post_type) {
+    function bkb_rkb_product_bulk_edit_box($column_name, $post_type)
+    {
 
         global $post;
 
@@ -272,7 +249,7 @@ class BKB_Rkb_Admin {
                 switch ($column_name) {
 
                     case 'bkb_rkb_status':
-                        ?>
+                    ?>
 
                         <fieldset class="inline-edit-col-right">
                             <div class="inline-edit-col">
@@ -289,7 +266,7 @@ class BKB_Rkb_Admin {
                             </div>
                         </fieldset>
 
-                        <?php
+            <?php
                         break;
                 }
 
@@ -297,10 +274,11 @@ class BKB_Rkb_Admin {
         }
     }
 
-    function manage_wp_posts_using_bulk_edit_rkb() {
+    function manage_wp_posts_using_bulk_edit_rkb()
+    {
 
         // we need the post IDs
-        $post_ids = ( isset($_POST['post_ids']) && !empty($_POST['post_ids']) ) ? $_POST['post_ids'] : NULL;
+        $post_ids = (isset($_POST['post_ids']) && !empty($_POST['post_ids'])) ? $_POST['post_ids'] : NULL;
 
         // if we have post IDs
         if (!empty($post_ids) && is_array($post_ids)) {
@@ -325,65 +303,65 @@ class BKB_Rkb_Admin {
             }
         }
     }
-    
-    
-        /***********************************************************
-        * @Loc: 
-        * @Description: Admin Top Filter For Role Manager
-        * @Since: 1.0.0
-        * @Created: 15-11-2015
-        * @Edited: 17-11-2015
-        * @By: Mahbub
-        ***********************************************************/
-    
 
-        function bkb_rkb_admin_top_user_role_filter(){
-            
-            global $typenow;
 
-            //only add filter to post type you want
-            if ($typenow == 'bwl_kb') {
-               
-                $bkbm_all_user_roles = get_editable_roles();
-                    
-                $bkbm_filter_user_roles = array();
+    /***********************************************************
+     * @Loc: 
+     * @Description: Admin Top Filter For Role Manager
+     * @Since: 1.0.0
+     * @Created: 15-11-2015
+     * @Edited: 17-11-2015
+     * @By: Mahbub
+     ***********************************************************/
 
-                if(sizeof($bkbm_all_user_roles)>0):
-                    foreach ($bkbm_all_user_roles as $role_id=>$role_info ) :
-                        $bkbm_filter_user_roles[$role_id] = $role_info['name'];
-                    endforeach;
-                endif;
-                ?>
-                <select name="bkb_rkb_user_roles">
+
+    function bkb_rkb_admin_top_user_role_filter()
+    {
+
+        global $typenow;
+
+        //only add filter to post type you want
+        if ($typenow == 'bwl_kb') {
+
+            $bkbm_all_user_roles = get_editable_roles();
+
+            $bkbm_filter_user_roles = array();
+
+            if (sizeof($bkbm_all_user_roles) > 0) :
+                foreach ($bkbm_all_user_roles as $role_id => $role_info) :
+                    $bkbm_filter_user_roles[$role_id] = $role_info['name'];
+                endforeach;
+            endif;
+            ?>
+            <select name="bkb_rkb_user_roles">
                 <option value=""><?php _e('Select Role ', 'bkb_rkb'); ?></option>
                 <?php
-                    $current_v = isset($_GET['bkb_rkb_user_roles'])? $_GET['bkb_rkb_user_roles']:'';
-                    foreach ($bkbm_filter_user_roles as $label => $value) {
-                        printf
-                            (
-                                '<option value="%s"%s>%s</option>',
-                                $label,
-                                $label == $current_v? ' selected="selected"':'',
-                                $value
-                            );
-                        }
+                $current_v = isset($_GET['bkb_rkb_user_roles']) ? $_GET['bkb_rkb_user_roles'] : '';
+                foreach ($bkbm_filter_user_roles as $label => $value) {
+                    printf(
+                        '<option value="%s"%s>%s</option>',
+                        $label,
+                        $label == $current_v ? ' selected="selected"' : '',
+                        $value
+                    );
+                }
                 ?>
-                </select>
-                <?php
-            }
+            </select>
+<?php
         }
+    }
 
 
-        function cb_bkb_rkb_admin_top_user_role_filter( $query ){
-            
-            global $pagenow;
-            global $typenow;
-            
-            if ( 'bwl_kb' == $typenow && is_admin() && $pagenow=='edit.php' && isset($_GET['bkb_rkb_user_roles']) && $_GET['bkb_rkb_user_roles'] != '') {
-                $query->query_vars['meta_key'] = 'bkb_rkb_user_roles';
-                $query->query_vars['meta_value'] = $_GET['bkb_rkb_user_roles'];
-                $query->query_vars['meta_compare'] = 'LIKE';
-            }
+    function cb_bkb_rkb_admin_top_user_role_filter($query)
+    {
+
+        global $pagenow;
+        global $typenow;
+
+        if ('bwl_kb' == $typenow && is_admin() && $pagenow == 'edit.php' && isset($_GET['bkb_rkb_user_roles']) && $_GET['bkb_rkb_user_roles'] != '') {
+            $query->query_vars['meta_key'] = 'bkb_rkb_user_roles';
+            $query->query_vars['meta_value'] = $_GET['bkb_rkb_user_roles'];
+            $query->query_vars['meta_compare'] = 'LIKE';
         }
-
+    }
 }
