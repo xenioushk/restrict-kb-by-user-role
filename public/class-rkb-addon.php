@@ -9,13 +9,6 @@ if (!defined('WPINC')) {
 class BKB_Rkb
 {
 
-    /**
-     * Plugin version, used for cache-busting of style and script file references.
-     *
-     * @since   1.0.0
-     *
-     * @var     string
-     */
     const VERSION = '1.0.1';
 
     protected $plugin_slug = 'bkb-rkb';
