@@ -30,6 +30,7 @@ define('BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION', '1.0.9'); // change plugin requi
 define('BKBRKB_ADDON_CURRENT_VERSION', '1.0.5'); // change plugin current version in here.
 
 define('BKBRKB_DIR', plugin_dir_path(__FILE__));
+define("BKBRKB_PLUGIN_DIR", plugins_url() . '/restrict-kb-by-user-role/');
 require_once(plugin_dir_path(__FILE__) . 'public/class-rkb-addon.php');
 
 /*

@@ -88,17 +88,12 @@ class BKB_Rkb_Admin
             . 'to use <b>Restrict KB Access by User Role  - Knowledgebase Addon</b>.</p></div>';
     }
 
-    /**
-     * Register and enqueues public-facing JavaScript files.
-     *
-     * @since    1.0.0
-     */
+
     public function bkb_rkb_admin_enqueue_scripts($hook)
     {
 
         if ('edit.php' == $hook && isset($_GET['post_type']) && $_GET['post_type'] == "bwl_kb") {
-
-            wp_enqueue_script($this->plugin_slug . '-admin-custom-script', plugins_url('assets/js/bkb_rkb-admin-scripts.js', __FILE__), array('jquery'), BKB_Rkb::VERSION, TRUE);
+            wp_enqueue_script($this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BKB_Rkb::VERSION, TRUE);
         } else {
 
             return;
