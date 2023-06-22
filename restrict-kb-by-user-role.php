@@ -32,7 +32,6 @@ define('BKBRKB_ADDON_CURRENT_VERSION', '1.0.5'); // change plugin current versio
 define('BKBRKB_DIR', plugin_dir_path(__FILE__));
 require_once(plugin_dir_path(__FILE__) . 'public/class-rkb-addon.php');
 
-
 /*
  * Register hooks that are fired when the plugin is activated or deactivated.
  * When the plugin is deleted, the uninstall.php file is loaded.
