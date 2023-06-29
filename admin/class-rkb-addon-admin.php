@@ -3,14 +3,17 @@ if (!defined('WPINC')) {
     die;
 }
 
+
+use \BwlKbManager\Base\BaseController;
+
 class BKB_Rkb_Admin
 {
-
 
     protected static $instance = null;
 
     public $plugin_slug;
     protected $plugin_screen_hook_suffix = null;
+    public $baseController;
 
 
     private function __construct()
@@ -24,7 +27,8 @@ class BKB_Rkb_Admin
 
         $plugin = BKB_rkb::get_instance();
         $this->plugin_slug = $plugin->get_plugin_slug();
-        $post_types = 'bwl_kb';
+        $this->baseController = new BaseController();
+        $post_types = $this->baseController->plugin_post_type;
 
         // After manage text we need to add "custom_post_type" value.
         add_filter('manage_' . $post_types . '_posts_columns', array($this, 'bkb_rkb_custom_column_header'));
@@ -61,15 +65,6 @@ class BKB_Rkb_Admin
     public static function get_instance()
     {
 
-        /*
-         * @TODO :
-         *
-         * - Uncomment following lines if the admin class should only be available for super admins
-         */
-        /* if( ! is_super_admin() ) {
-          return;
-          } */
-
         // If the single instance hasn't been set, set it now.
         if (null == self::$instance) {
             self::$instance = new self;
@@ -92,7 +87,7 @@ class BKB_Rkb_Admin
     public function bkb_rkb_admin_enqueue_scripts($hook)
     {
 
-        if ('edit.php' == $hook && isset($_GET['post_type']) && $_GET['post_type'] == "bwl_kb") {
+        if ('edit.php' == $hook && isset($_GET['post_type']) && $_GET['post_type'] == $this->baseController->plugin_post_type) {
             wp_enqueue_script($this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BKB_Rkb::VERSION, TRUE);
         } else {
 
@@ -316,7 +311,7 @@ class BKB_Rkb_Admin
         global $typenow;
 
         //only add filter to post type you want
-        if ($typenow == 'bwl_kb') {
+        if ($typenow == $this->baseController->plugin_post_type) {
 
             $bkbm_all_user_roles = get_editable_roles();
 
@@ -353,7 +348,7 @@ class BKB_Rkb_Admin
         global $pagenow;
         global $typenow;
 
-        if ('bwl_kb' == $typenow && is_admin() && $pagenow == 'edit.php' && isset($_GET['bkb_rkb_user_roles']) && $_GET['bkb_rkb_user_roles'] != '') {
+        if ($this->baseController->plugin_post_type == $typenow && is_admin() && $pagenow == 'edit.php' && isset($_GET['bkb_rkb_user_roles']) && $_GET['bkb_rkb_user_roles'] != '') {
             $query->query_vars['meta_key'] = 'bkb_rkb_user_roles';
             $query->query_vars['meta_value'] = $_GET['bkb_rkb_user_roles'];
             $query->query_vars['meta_compare'] = 'LIKE';

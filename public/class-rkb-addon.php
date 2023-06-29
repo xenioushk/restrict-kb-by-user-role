@@ -6,20 +6,21 @@ if (!defined('WPINC')) {
     die;
 }
 
+use \BwlKbManager\Base\BaseController;
+
 class BKB_Rkb
 {
 
-    const VERSION = '1.0.1';
-
+    const VERSION = BKBRKB_ADDON_CURRENT_VERSION;
     protected $plugin_slug = 'bkb-rkb';
-
     protected static $instance = null;
+    public $baseController;
 
     private function __construct()
     {
 
         if (class_exists('BwlKbManager\\Init') && BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION > '1.0.5') {
-
+            $this->baseController = new BaseController();
             $this->include_files();
             add_filter('bkb_rkb_post_access', array($this, 'bkb_rkb_post_access'));
             add_filter('the_content', array($this,  'bkb_rkb_modify_taxonomy_exceprt'));
@@ -29,7 +30,6 @@ class BKB_Rkb
             add_filter('bkb_rkb_search_query_filter', array($this,  'bkb_rkb_search_query_filter'));
         }
     }
-
 
     public function include_files()
     {
@@ -163,7 +163,7 @@ class BKB_Rkb
     public function bkb_rkb_query_filter($args)
     {
 
-        global $bkb_data;
+        $bkb_data = $this->baseController->bkb_data;
 
         // If Restriction plugin is activated but the user want to allow all KB contents for all user then
         // Plugin will not modify Meta query arguments.
@@ -247,7 +247,9 @@ class BKB_Rkb
     public function custom_rkb_title($title)
     {
 
-        global $post, $bkb_data;
+        global $post;
+
+        $bkb_data = $this->baseController->bkb_data;
 
         $bkb_rkb_status = get_post_meta($post->ID, "bkb_rkb_status", TRUE);
 
@@ -276,7 +278,9 @@ class BKB_Rkb
     public function bkb_rkb_modify_taxonomy_exceprt($content)
     {
 
-        global $post, $bkb_data;
+        global $post;
+
+        $bkb_data = $this->baseController->bkb_data;
 
         if (!is_admin() && is_tax('bkb_category') && isset($bkb_data['bkb_cat_default_tpl_ordering_status']['enabled']) && $bkb_data['bkb_cat_default_tpl_ordering_status']['enabled'] == 'on') {
 
@@ -323,7 +327,7 @@ class BKB_Rkb
     public function bkb_rkb_post_access($post_id)
     {
 
-        global $bkb_data;
+        $bkb_data = $this->baseController->bkb_data;
 
         // First we check if global KB access disable status. If global status is 1 then we allow all kind of users 
         // to access all the KB content.
@@ -367,7 +371,7 @@ class BKB_Rkb
     public function bkb_rkb_blog_query_filter($bkb_kbdabp_excluded_posts)
     {
 
-        global $bkb_data;
+        $bkb_data = $this->baseController->bkb_data;
 
         // First we check if global KB access disable status. If global status is 1 then we allow all kind of users 
         // to access all the KB content.
@@ -378,7 +382,7 @@ class BKB_Rkb
 
         $args = array(
             'post_status' => 'publish',
-            'post_type' => 'bwl_kb',
+            'post_type' => $this->baseController->plugin_post_type,
             'ignore_sticky_posts' => 1,
             'posts_per_page' => -1
         );
@@ -468,10 +472,6 @@ class BKB_Rkb
             'posts_per_page'  => $limit,
             'orderby' => $orderby,
         );
-        //                   echo "<pre>";
-        //                   print_r($args);
-        //                   echo "</pre>";
-        //                   die();
 
         $current_user = wp_get_current_user(); // Get current user info.
         $current_user_role = "";
@@ -501,7 +501,6 @@ class BKB_Rkb
         } else if ($current_user_role != "" && $current_user_role == "administrator") {
 
             // Admin user
-            //                        die();
             $args['meta_query'] = array();
         } else {
 
@@ -516,26 +515,13 @@ class BKB_Rkb
             );
         }
 
-        $query = new WP_Query($args);
-
-        //                   echo $wpdb->last_query;
-        //                   echo "<pre>";
-        //                   print_r($query);
-        //                   echo "</pre>";
+        $query = new \WP_Query($args);
 
         $pageposts = $query->posts;
-
-        //                   echo "<pre>";
-        //                   print_r($pageposts);
-        //                   echo "</pre>";
 
         $output = array();
         $counter = 0;
         foreach ($pageposts as $k => $v) {
-
-            //                        echo "<pre>";
-            //                        print_r($v);
-            //                        echo "</pre>";
 
             $output[$counter]['title'] = $v->post_title;
             $output[$counter]['link'] = get_permalink($v->ID);
@@ -543,13 +529,6 @@ class BKB_Rkb
         }
 
         $results = $output;
-        //                    
-        //                    echo "<pre>";
-        //                    print_r($results);
-        //                    echo "</pre>";
-        //
-        //                    die();
-
         return $results;
     }
 }

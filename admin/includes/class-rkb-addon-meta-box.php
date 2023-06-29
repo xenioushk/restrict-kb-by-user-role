@@ -5,13 +5,15 @@ if (!defined('WPINC')) {
 }
 
 use \BwlKbManager\Api\CmbMetaBoxApi;
+use \BwlKbManager\Base\BaseController;
 
 class RkbAddonMetaBox
 {
     function bkb_rkb_custom_meta_init()
     {
+        $baseController = new BaseController();
         $bkbm_all_user_roles = get_editable_roles();
-        $bkbm_filter_user_roles = array();
+        $bkbm_filter_user_roles = [];
 
         if (sizeof($bkbm_all_user_roles) > 0) :
             foreach ($bkbm_all_user_roles as $role_id => $role_info) :
@@ -19,15 +21,11 @@ class RkbAddonMetaBox
             endforeach;
         endif;
 
-        //    echo "<pre>";
-        //    print_r($bkbm_filter_user_roles);
-        //    echo "</pre>";
-        //    die();
         $custom_fields = array(
 
             'meta_box_id'           => 'cmb_bkb_rkb', // Unique id of meta box.
             'meta_box_heading'  => __('KB Access Restriction', 'bkb_rkb'), // That text will be show in meta box head section.
-            'post_type'               => 'bwl_kb', // define post type. go to register_post_type method to view post_type name.        
+            'post_type'               => $baseController->plugin_post_type, // define post type. go to register_post_type method to view post_type name.        
             'context'                   => 'side',
             'priority'                    => 'low',
             'fields'                       => array(

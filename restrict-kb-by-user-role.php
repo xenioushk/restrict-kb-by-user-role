@@ -16,13 +16,6 @@ if (!defined('WPINC')) {
     die;
 }
 
-/* ----------------------------------------------------------------------------*
- * Public-Facing Functionality
- * ---------------------------------------------------------------------------- */
-
-//Version Define For Parent Plugin And Addon.
-// @Since: 1.0.0
-
 define('BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION', get_option('bwl_kb_plugin_version'));
 define('BKBRKB_ADDON_PARENT_PLUGIN_TITLE', '<b>BWL Knowledge Base Manager Plugin</b> ');
 define('BKBRKB_ADDON_TITLE', '<b>Restrict KB Access by User Role</b>');
@@ -33,18 +26,11 @@ define('BKBRKB_DIR', plugin_dir_path(__FILE__));
 define("BKBRKB_PLUGIN_DIR", plugins_url() . '/restrict-kb-by-user-role/');
 require_once(plugin_dir_path(__FILE__) . 'public/class-rkb-addon.php');
 
-/*
- * Register hooks that are fired when the plugin is activated or deactivated.
- * When the plugin is deleted, the uninstall.php file is loaded.
- */
+
 register_activation_hook(__FILE__, array('BKB_Rkb', 'activate'));
 register_deactivation_hook(__FILE__, array('BKB_Rkb', 'deactivate'));
 
 add_action('plugins_loaded', array('BKB_Rkb', 'get_instance'));
-
-/* ----------------------------------------------------------------------------*
- * Dashboard and Administrative Functionality
- * ---------------------------------------------------------------------------- */
 
 if (is_admin()) {
     require_once(plugin_dir_path(__FILE__) . 'admin/includes/class-rkb-addon-meta-box.php');
