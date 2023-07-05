@@ -33,7 +33,7 @@ register_deactivation_hook(__FILE__, array('BKB_Rkb', 'deactivate'));
 add_action('plugins_loaded', array('BKB_Rkb', 'get_instance'));
 
 if (is_admin()) {
-    require_once(plugin_dir_path(__FILE__) . 'admin/includes/class-rkb-addon-meta-box.php');
+
     require_once(plugin_dir_path(__FILE__) . 'admin/class-rkb-addon-admin.php');
     add_action('plugins_loaded', array('BKB_Rkb_Admin', 'get_instance'));
 }

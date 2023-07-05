@@ -30,6 +30,10 @@ class BKB_Rkb_Admin
         $this->baseController = new BaseController();
         $post_types = $this->baseController->plugin_post_type;
 
+        // Add the meta box.
+
+        require_once(plugin_dir_path(__FILE__) . 'includes/class-rkb-addon-meta-box.php');
+
         // After manage text we need to add "custom_post_type" value.
         add_filter('manage_' . $post_types . '_posts_columns', array($this, 'bkb_rkb_custom_column_header'));
 
