@@ -4,7 +4,7 @@
  * Plugin Name:     Restrict KB Access by User Role - Knowledgebase Addon
  * Plugin URI:        http://bit.ly/kb-lock
  * Description:      Restrict KB Addon allows you to limit access of KB content according to user role. 
- * Version:           1.0.5
+ * Version:           1.0.6
  * Author:            Md Mahbub Alam Khan
  * Author URI:       http://codecanyon.net/user/xenioushk?ref=xenioushk
  * Text Domain: bkb_rkb
@@ -19,8 +19,8 @@ if (!defined('WPINC')) {
 define('BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION', get_option('bwl_kb_plugin_version'));
 define('BKBRKB_ADDON_PARENT_PLUGIN_TITLE', '<b>BWL Knowledge Base Manager Plugin</b> ');
 define('BKBRKB_ADDON_TITLE', '<b>Restrict KB Access by User Role</b>');
-define('BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION', '1.0.9'); // change plugin required version in here.
-define('BKBRKB_ADDON_CURRENT_VERSION', '1.0.5'); // change plugin current version in here.
+define('BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION', '1.4.2'); // change plugin required version in here.
+define('BKBRKB_ADDON_CURRENT_VERSION', '1.0.6'); // change plugin current version in here.
 
 define('BKBRKB_DIR', plugin_dir_path(__FILE__));
 define("BKBRKB_PLUGIN_DIR", plugins_url() . '/restrict-kb-by-user-role/');
