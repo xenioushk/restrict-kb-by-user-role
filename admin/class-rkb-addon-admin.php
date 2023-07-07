@@ -90,21 +90,15 @@ class BKB_Rkb_Admin
 
     public function bkb_rkb_admin_enqueue_scripts($hook)
     {
-
-        if ('edit.php' == $hook && isset($_GET['post_type']) && $_GET['post_type'] == $this->baseController->plugin_post_type) {
-            wp_enqueue_script($this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BKB_Rkb::VERSION, TRUE);
-            wp_localize_script(
-                $this->plugin_slug . '-admin',
-                'BkbmRkburAdminData',
-                [
-                    'product_id' => 13722991,
-                    'installation' => get_option('bkbm_rkbur_installation')
-                ]
-            );
-        } else {
-
-            return;
-        }
+        wp_enqueue_script($this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BKB_Rkb::VERSION, TRUE);
+        wp_localize_script(
+            $this->plugin_slug . '-admin',
+            'BkbmRkburAdminData',
+            [
+                'product_id' => 13722991,
+                'installation' => get_option('bkbm_rkbur_installation')
+            ]
+        );
     }
 
     function bkb_rkb_custom_column_header($columns)
