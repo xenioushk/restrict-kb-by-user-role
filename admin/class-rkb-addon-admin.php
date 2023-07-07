@@ -29,6 +29,7 @@ class BKB_Rkb_Admin
         $this->plugin_slug = $plugin->get_plugin_slug();
         $this->baseController = new BaseController();
         $post_types = $this->baseController->plugin_post_type;
+        $this->includedFiles();
 
         // Add the meta box.
 
