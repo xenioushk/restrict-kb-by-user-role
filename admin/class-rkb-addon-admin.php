@@ -59,13 +59,6 @@ class BKB_Rkb_Admin
     }
 
 
-    /**
-     * Return an instance of this class.
-     *
-     * @since     1.0.0
-     *
-     * @return    object    A single instance of this class.
-     */
     public static function get_instance()
     {
 
@@ -87,12 +80,27 @@ class BKB_Rkb_Admin
             . 'to use <b>Restrict KB Access by User Role  - Knowledgebase Addon</b>.</p></div>';
     }
 
+    public function includedFiles()
+    {
+        require_once(BKBRKB_DIR . 'includes/autoupdater/WpAutoUpdater.php');
+        require_once(BKBRKB_DIR . 'includes/autoupdater/installer.php');
+        require_once(BKBRKB_DIR . 'includes/autoupdater/updater.php');
+    }
+
 
     public function bkb_rkb_admin_enqueue_scripts($hook)
     {
 
         if ('edit.php' == $hook && isset($_GET['post_type']) && $_GET['post_type'] == $this->baseController->plugin_post_type) {
             wp_enqueue_script($this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BKB_Rkb::VERSION, TRUE);
+            wp_localize_script(
+                $this->plugin_slug . '-admin',
+                'BkbmRkburAdminData',
+                [
+                    'product_id' => 13722991,
+                    'installation' => get_option('bkbm_rkbur_installation')
+                ]
+            );
         } else {
 
             return;
