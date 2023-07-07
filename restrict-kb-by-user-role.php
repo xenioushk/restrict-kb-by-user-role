@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Plugin Name:     Restrict KB Access by User Role - Knowledgebase Addon
- * Plugin URI:        http://bit.ly/kb-lock
- * Description:      Restrict KB Addon allows you to limit access of KB content according to user role. 
+ * Plugin Name:   Restrict KB Access by User Role - Knowledgebase Addon
+ * Plugin URI:      https://1.envato.market/bkbm-wp
+ * Description:     Restrict KB Addon allows you to limit access of KB content according to user role. 
  * Version:           1.0.6
- * Author:            Md Mahbub Alam Khan
- * Author URI:       http://codecanyon.net/user/xenioushk?ref=xenioushk
- * Text Domain: bkb_rkb
- *Domain Path: /languages/
+ * Author:            Mahbub Alam Khan
+ * Author URI:      https://1.envato.market/bkbm-wp
+ * Text Domain:    bkb_rkb
+ *Domain Path:     /languages/
  */
 // If this file is called directly, abort.
 
