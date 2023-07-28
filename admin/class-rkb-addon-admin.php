@@ -96,7 +96,7 @@ class BKB_Rkb_Admin
             $this->plugin_slug . '-admin',
             'BkbmRkburAdminData',
             [
-                'product_id' => 13722991,
+                'product_id' => BKBRKB_ADDON_CC_ID,
                 'installation' => get_option('bkbm_rkbur_installation')
             ]
         );
