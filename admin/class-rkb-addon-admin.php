@@ -97,7 +97,7 @@ class BKB_Rkb_Admin
             'BkbmRkburAdminData',
             [
                 'product_id' => BKBRKB_ADDON_CC_ID,
-                'installation' => get_option('bkbm_rkbur_installation')
+                'installation' => get_option(BKBRKB_ADDON_INSTALLATION_TAG)
             ]
         );
     }

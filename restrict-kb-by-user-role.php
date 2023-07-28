@@ -22,6 +22,9 @@ define('BKBRKB_ADDON_PARENT_PLUGIN_TITLE', '<b>BWL Knowledge Base Manager Plugin
 define('BKBRKB_ADDON_TITLE', '<b>Restrict KB Access by User Role</b>');
 define('BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION', '1.4.2'); // change plugin required version in here.
 define('BKBRKB_ADDON_CURRENT_VERSION', '1.0.7'); // change plugin current version in here.
+
+define('BKBRKB_ADDON_INSTALLATION_TAG', 'bkbm_rkbur_installation_' . str_replace('.', '_', BKBRKB_ADDON_CURRENT_VERSION));
+
 define('BKBRKB_ADDON_UPDATER_SLUG', plugin_basename(__FILE__)); // change plugin current version in here.
 
 define("BKBRKB_ADDON_CC_ID", "13722991"); // Plugin codecanyon Id.
