@@ -1,1 +1,14 @@
+#bkb_rkb_status,
+.column-bkb_rkb_status {
+  text-align: center;
+}
 
+td.column-bkb_rkb_status {
+  cursor: help;
+  .dashicons-unlock {
+    color: $color-green;
+  }
+  .dashicons-lock {
+    color: $color-red;
+  }
+}

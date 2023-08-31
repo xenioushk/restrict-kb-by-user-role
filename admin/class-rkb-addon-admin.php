@@ -91,6 +91,7 @@ class BKB_Rkb_Admin
 
     public function bkb_rkb_admin_enqueue_scripts($hook)
     {
+        wp_enqueue_style($this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/styles/admin.css', false, BKB_Rkb::VERSION);
         wp_enqueue_script($this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/scripts/admin.js', ['jquery'], BKB_Rkb::VERSION, TRUE);
         wp_localize_script(
             $this->plugin_slug . '-admin',
@@ -128,7 +129,7 @@ class BKB_Rkb_Admin
 
                 // FAQ Display Status In Text.
 
-                $bkb_rkb_status_in_text = ($bkb_rkb_status == 1) ? '<i class="fa fa-lock"></i>' : '<i class="fa fa-unlock"></i>';
+                $bkb_rkb_status_in_text = ($bkb_rkb_status == 1) ? '<span class="dashicons dashicons-lock"></span>' : '<span class="dashicons dashicons-unlock"></span>';
 
                 $bkb_rkb_user_roles_access_text = __("All types of user can view this KB content", 'bkb_rkb');
 
@@ -143,13 +144,13 @@ class BKB_Rkb_Admin
                     }
                 }
 
-                echo '<div style="cursor: help;" id="bkb_rkb_status-' . $post->ID . '" data-status_code="' . $bkb_rkb_status . '" title="' . ucwords($bkb_rkb_user_roles_access_text) . '">' . $bkb_rkb_status_in_text . '</div>';
+                echo '<div id="bkb_rkb_status-' . $post->ID . '" data-status_code="' . $bkb_rkb_status . '" title="' . ucwords($bkb_rkb_user_roles_access_text) . '">' . $bkb_rkb_status_in_text . '</div>';
 
                 break;
         }
     }
 
-    /* ------------------------------ Bulk & Quick Edit Section --------------------------------- */
+    /*== Bulk & Quick Edit Section == */
 
     function bkb_rkb_product_quick_edit_box($column_name, $post_type)
     {
@@ -303,14 +304,12 @@ class BKB_Rkb_Admin
 
 
     /***********************************************************
-     * @Loc: 
      * @Description: Admin Top Filter For Role Manager
      * @Since: 1.0.0
      * @Created: 15-11-2015
      * @Edited: 17-11-2015
      * @By: Mahbub
      ***********************************************************/
-
 
     function bkb_rkb_admin_top_user_role_filter()
     {

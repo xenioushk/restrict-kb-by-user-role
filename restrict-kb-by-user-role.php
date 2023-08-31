@@ -4,7 +4,7 @@
  * Plugin Name:   Restrict KB Access by User Role - Knowledgebase Addon
  * Plugin URI:      https://1.envato.market/bkbm-wp
  * Description:     Restrict KB Addon allows you to limit access of KB content according to user role. 
- * Version:           1.0.7
+ * Version:           1.0.8
  * Author:            Mahbub Alam Khan
  * Author URI:      https://bluewindlab.net
  * Text Domain:    bkb_rkb
@@ -21,7 +21,7 @@ define('BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION', get_option('bwl_kb_plugin_versi
 define('BKBRKB_ADDON_PARENT_PLUGIN_TITLE', '<b>BWL Knowledge Base Manager Plugin</b> ');
 define('BKBRKB_ADDON_TITLE', '<b>Restrict KB Access by User Role</b>');
 define('BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION', '1.4.2'); // change plugin required version in here.
-define('BKBRKB_ADDON_CURRENT_VERSION', '1.0.7'); // change plugin current version in here.
+define('BKBRKB_ADDON_CURRENT_VERSION', '1.0.8'); // change plugin current version in here.
 
 define('BKBRKB_ADDON_INSTALLATION_TAG', 'bkbm_rkbur_installation_' . str_replace('.', '_', BKBRKB_ADDON_CURRENT_VERSION));
 
