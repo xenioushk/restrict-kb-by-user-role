@@ -19,7 +19,7 @@ class BKB_Rkb
     private function __construct()
     {
 
-        if (class_exists('BwlKbManager\\Init') && BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION > '1.0.5') {
+        if (class_exists('BwlKbManager\\Init') && BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION > '1.0.5' && BKBRKB_PARENT_PLUGIN_PURCHASE_STATUS == 1) {
             $this->baseController = new BaseController();
             $this->include_files();
             add_filter('bkb_rkb_post_access', array($this, 'bkb_rkb_post_access'));
@@ -31,9 +31,12 @@ class BKB_Rkb
         }
     }
 
+    /**
+     * Include required files.
+     * @since: 1.0
+     */
     public function include_files()
     {
-
         require_once(BKBRKB_DIR . 'public/includes/bkb-rkb-helpers.php');
     }
 

@@ -3,7 +3,6 @@ if (!defined('WPINC')) {
     die;
 }
 
-
 use \BwlKbManager\Base\BaseController;
 
 class BKB_Rkb_Admin
@@ -15,13 +14,16 @@ class BKB_Rkb_Admin
     protected $plugin_screen_hook_suffix = null;
     public $baseController;
 
-
     private function __construct()
     {
 
-
         if (!class_exists('BwlKbManager\\Init') || BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION < '1.0.5') {
-            add_action('admin_notices', array($this, 'rkb_version_update_admin_notice'));
+            add_action('admin_notices', array($this, 'rkbVersionUpdateAdminNotice'));
+            return false;
+        }
+
+        if (BKBRKB_PARENT_PLUGIN_PURCHASE_STATUS == 0) {
+            add_action('admin_notices', array($this, 'rkbPurchaseVerificationNotice'));
             return false;
         }
 
@@ -73,12 +75,20 @@ class BKB_Rkb_Admin
 
     //Version Manager:  Update Checking
 
-    public function rkb_version_update_admin_notice()
+    public function rkbVersionUpdateAdminNotice()
     {
-
         echo '<div class="updated"><p>You need to download & install '
-            . '<b><a href="https://1.envato.market/bkbm-wp" target="_blank">BWL Knowledge Base Manager Plugin</a></b> '
-            . 'to use <b>Restrict KB Access by User Role  - Knowledgebase Addon</b>.</p></div>';
+            . '<b><a href="https://1.envato.market/bkbm-wp" target="_blank">' . BKBRKB_ADDON_PARENT_PLUGIN_TITLE . '</a></b> '
+            . 'to use <b>' . BKBRKB_ADDON_TITLE . '</b>.</p></div>';
+    }
+
+    function rkbPurchaseVerificationNotice()
+    {
+        $licensePage = admin_url("edit.php?post_type=bwl_kb&page=bkb-license");
+
+        echo '<div class="updated"><p>You need to <a href="' . $licensePage . '">activate</a> '
+            . '<b>' . BKBRKB_ADDON_PARENT_PLUGIN_TITLE . '</b> '
+            . 'to use <b>' . BKBRKB_ADDON_TITLE . '</b>.</p></div>';
     }
 
     public function includedFiles()
