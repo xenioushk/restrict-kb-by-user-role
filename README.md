@@ -62,17 +62,17 @@ Restriction Output
 
 ### Quick/Bulk Edit Option
 
-You can also use Quick/Bulk Edit option to set restriction for multiple posts. To do this go to "All KB Items" section and then when you put your mouse on a post you will get 'Quick Edit' link. Click on it and you will get option to set Access Restriction. Select your preferable option and click update.
+You can also use the `Quick/Bulk` Edit option to set restrictions for multiple posts. To do this, go to the `All KB Items` section, and then when you hover your mouse on any post, you will get a `Quick Edit` link. Click on it, and you will see an option to set access restrictions. Select your preferable option and click `Update`.
 
 ![Quick/Bulk Edit Option](https://xenioushk.github.io/docs-plugins-addon/bkbm-addon/rkb/screenshot/02_04_quick_edit.png)
 
-For Bulk Edit, select multiple post and then click 'Edit' from top of the menu and click "Apply". You will get option to set Access Restriction. Select your preferable option and click update.
+For the `Bulk Edit`, select multiple posts, and then click 'Edit' from the top of the menu and click "Apply". You will get options to set `Access Restriction`. Select your preferable option and click update.
 
 ![Quick/Bulk Edit Option](https://xenioushk.github.io/docs-plugins-addon/bkbm-addon/rkb/screenshot/02_05_bulk_edit.png)
 
 ### Administrator Panel Filter Option
 
-You can filter posts by user role from Administrator panel. Which gives you a nice overview about user role based post access. Also, you can see the Knowledge Base post locked/unlocked status from custom column.
+The Administrator panel allows you to filter posts by the `user role`. This provides you with a comprehensive overview of post access based on user roles. Also, in the custom column, you can see the Knowledge Base post `locked/unlocked` status.
 
 ![Administrator Panel Filter Option](https://xenioushk.github.io/docs-plugins-addon/bkbm-addon/rkb/screenshot/02_06_post_filter.png)
 
