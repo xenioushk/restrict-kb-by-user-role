@@ -4,7 +4,9 @@ Are you looking for a way to manage and restrict knowledge base contents for spe
 
 Addon provides you with premium and flexible settings. With just a few clicks, you can modify or control the access to your knowledge base contents. You can hide all restricted knowledge base contents from global users, or you can display them with a small lock icon with a title to notify them about restricted items.
 
-Addon has an extensive options panel that allows you to manage global restriction settings, restricted item display settings, lock icon display settings, and custom message for locked content settings. Addon automatically manages your sidebar knowledge base contents, related knowledge base contents, and custom knowledge template contents.
+![Demo of Restrict KB Access by User Role - Knowledgebase Addon](https://xenioushk.github.io/docs-plugins-addon/bkbm-addon/rkb/screenshot/01_templify_kb.png)
+
+Addon has an extensive options panel that allows you to manage **global restriction settings**, **restricted item display settings**, **lock icon display settings**, and **custom message** for locked content settings. Addon automatically manages your sidebar knowledge base contents, related knowledge base contents, and custom knowledge template contents.
 
 Addon comes with Quick/Bulk and custom meta box options to set user roles. Administrator users can access all contents by default, and you can add more user roles with just a few clicks.
 
