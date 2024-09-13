@@ -11,9 +11,7 @@ class RkbAddonMetaBox
 {
     function bkb_rkb_custom_meta_init()
     {
-        $baseController = new BaseController();
-
-        
+        $baseController = new BaseController();        
         // Get all the roles
         global $wp_roles;
         $allAvailableRoles = $wp_roles->roles;
