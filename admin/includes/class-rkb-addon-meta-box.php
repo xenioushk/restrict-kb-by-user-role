@@ -12,12 +12,16 @@ class RkbAddonMetaBox
     function bkb_rkb_custom_meta_init()
     {
         $baseController = new BaseController();
-        $bkbm_all_user_roles = get_editable_roles();
-        $bkbm_filter_user_roles = [];
 
-        if (sizeof($bkbm_all_user_roles) > 0) :
-            foreach ($bkbm_all_user_roles as $role_id => $role_info) :
-                $bkbm_filter_user_roles[$role_id] = $role_info['name'];
+        
+        // Get all the roles
+        global $wp_roles;
+        $allAvailableRoles = $wp_roles->roles;
+        $filteredRoles = [];
+
+        if (sizeof($allAvailableRoles) > 0) :
+            foreach ($allAvailableRoles as $role_id => $role_info) :                
+                $filteredRoles[$role_id] = $role_info['name'];
             endforeach;
         endif;
 
@@ -46,7 +50,7 @@ class RkbAddonMetaBox
                     'id'         => 'bkb_rkb_user_roles',
                     'name'    => 'bkb_rkb_user_roles',
                     'type'      => 'multiple_checkbox',
-                    'value'     => $bkbm_filter_user_roles,
+                    'value'     => $filteredRoles,
                     'default_value' => 1,
                     'class'      => 'widefat',
                     'disable_item' => 'administrator',

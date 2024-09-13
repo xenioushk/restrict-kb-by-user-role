@@ -21,10 +21,21 @@ if (!function_exists('bkb_user_can_access_content')) {
 
         //Get All List of Allowed User set by the admin.
         $bkb_rkb_user_roles = get_post_meta($post_id, "bkb_rkb_user_roles", TRUE);
-        if (!is_array($bkb_rkb_user_roles)) {
-            $bkb_rkb_user_roles = array('administrator');
-        }
 
+        $defaultRole ='administrator';
+ 
+        if(!empty($bkb_rkb_user_roles)) {
+
+            $isAdminRoleExists=array_search($defaultRole, $bkb_rkb_user_roles, true);
+
+            if( $isAdminRoleExists ===  false ) 
+            {
+                $bkb_rkb_user_roles[] = $defaultRole;
+            }
+
+        } else {
+            $bkb_rkb_user_roles = [$defaultRole];
+        }
 
         // Get current user info.
         $current_user = wp_get_current_user();

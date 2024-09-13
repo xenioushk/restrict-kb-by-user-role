@@ -11,6 +11,10 @@
 
     // On change action
 
+    if ($bkb_rkb_user_roles.find("input[readonly=readonly]").length) {
+      $bkb_rkb_user_roles.find("input[readonly=readonly]").prop("checked", true)
+    }
+
     $bkb_rkb_status.on("change", function () {
       if ($(this).val() == 1) {
         $bkb_rkb_user_roles.show("slow")
