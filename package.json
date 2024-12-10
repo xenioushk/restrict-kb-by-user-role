@@ -1,15 +1,16 @@
 {
   "name": "restrict-kb-by-user-role",
   "version": "1.0.0",
-  "description": "",
+  "description": "Restrict KB Addon allows you to limit access of KB content according to user role. ",
   "main": "index.js",
   "scripts": {
     "build": "wp-scripts build",
     "start": "wp-scripts start",
     "dev": "wp-scripts start",
     "start:hot": "wp-scripts start --hot",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "plugin-zip": "wp-scripts plugin-zip"
+    "plugin-zip": "wp-scripts plugin-zip",
+    "make-pot": "wp i18n make-pot . languages/restrict-kb-by-user-role.pot --slug=restrict-kb-by-user-role --domain=bkb_rkb --exclude=node_modules,src",
+    "make-json": "wp i18n make-json languages/ --no-purge"
   },
   "author": "Md Mahbub Alam Khan <hkhan.cse@gmail.com> (https://bluewindlab.net/)",
   "license": "MIT",

@@ -1,0 +1,112 @@
+# Copyright (C) 2024 Mahbub Alam Khan
+# This file is distributed under the same license as the Restrict KB Access by User Role - Knowledgebase Addon plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Restrict KB Access by User Role - Knowledgebase Addon 1.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/restrict-kb-by-user-role\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-12-10T17:45:12+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: bkb_rkb\n"
+
+#. Plugin Name of the plugin
+msgid "Restrict KB Access by User Role - Knowledgebase Addon"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://1.envato.market/bkbm-wp"
+msgstr ""
+
+#. Description of the plugin
+msgid "Restrict KB Addon allows you to limit access of KB content according to user role."
+msgstr ""
+
+#. Author of the plugin
+msgid "Mahbub Alam Khan"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://bluewindlab.net"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:122
+msgid "Access"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:144
+msgid "All types of user can view this KB content"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:150
+msgid "only administrator can access this KB"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:153
+msgid "only"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:153
+msgid "can access this KB"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:185
+msgid "Restrict Access"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:187
+#: admin/class-rkb-addon-admin.php:268
+msgid "- No Change -"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:188
+#: admin/class-rkb-addon-admin.php:269
+#: admin/includes/class-rkb-addon-meta-box.php:41
+msgid "Yes"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:189
+#: admin/class-rkb-addon-admin.php:270
+#: admin/includes/class-rkb-addon-meta-box.php:40
+msgid "No"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:266
+msgid "Restrict Access?"
+msgstr ""
+
+#: admin/class-rkb-addon-admin.php:343
+msgid "Select Role "
+msgstr ""
+
+#: admin/includes/class-rkb-addon-meta-box.php:29
+msgid "KB Access Restriction"
+msgstr ""
+
+#: admin/includes/class-rkb-addon-meta-box.php:35
+msgid "Restrict KB content access?"
+msgstr ""
+
+#: admin/includes/class-rkb-addon-meta-box.php:47
+msgid "Select user roles you want to give access: "
+msgstr ""
+
+#: admin/includes/class-rkb-addon-meta-box.php:55
+msgid "Administrator always able to access all the KB items"
+msgstr ""
+
+#: public/class-rkb-addon.php:365
+msgid "Sorry, you are not allowed to access the knowledgebase content."
+msgstr ""
+
+#: public/class-rkb-addon.php:366
+msgid "Log In"
+msgstr ""
+
+#: public/class-rkb-addon.php:366
+msgid "required to access the content"
+msgstr ""
