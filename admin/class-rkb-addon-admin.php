@@ -7,7 +7,6 @@ use BwlKbManager\Base\BaseController;
 
 class BKB_Rkb_Admin {
 
-
     protected static $instance = null;
 
     public $plugin_slug;
@@ -18,11 +17,6 @@ class BKB_Rkb_Admin {
 
         if ( ! class_exists( 'BwlKbManager\\Init' ) || BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION < '1.0.5' ) {
             add_action( 'admin_notices', [ $this, 'rkbVersionUpdateAdminNotice' ] );
-            return false;
-        }
-
-        if ( BKBRKB_PARENT_PLUGIN_PURCHASE_STATUS == 0 ) {
-            add_action( 'admin_notices', [ $this, 'rkbPurchaseVerificationNotice' ] );
             return false;
         }
 

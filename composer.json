@@ -2,11 +2,6 @@
   "name": "xenioushk/restrict_kb_access_by_user_role_addon",
   "description": "Restrict KB Access by User Role Addon",
   "type": "project",
-  "autoload": {
-    "psr-4": {
-      "BkbDabpAddon\\": "includes/"
-    }
-  },
   "require-dev": {
     "wp-coding-standards/wpcs": "^3.1",
     "phpcompatibility/phpcompatibility-wp": "2.1",
