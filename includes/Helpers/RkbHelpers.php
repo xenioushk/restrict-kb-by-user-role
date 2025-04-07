@@ -8,7 +8,6 @@ namespace BKBRKB\Helpers;
  */
 class RkbHelpers {
 
-
     /**
      * Display safe HTML content.
      *
