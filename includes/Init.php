@@ -26,7 +26,7 @@ class Init {
 		$service_classes = [
 			'helpers' => self::get_helper_classes(),
 			'base'    => self::get_base_classes(),
-			// 'meta'     => self::get_meta_classes(),
+			'meta'    => self::get_meta_classes(),
 			// 'notices'  => self::get_notices_classes(),
 			// 'wpbakery' => self::get_wpbakery_classes(),
 		];
