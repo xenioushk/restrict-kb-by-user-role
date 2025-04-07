@@ -12,7 +12,7 @@ use Xenioushk\BwlPluginApi\Api\Filters\FiltersApi;
 /**
  * Class for registering the frontend filters.
  *
- * @since: 1.1.5
+ * @since: 1.1.0
  * @package BKBRKB
  */
 class RKBFilters {
