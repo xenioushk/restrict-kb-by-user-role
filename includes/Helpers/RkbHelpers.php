@@ -10,6 +10,28 @@ class RkbHelpers {
 
 
     /**
+     * Display safe HTML content.
+     *
+     * @param string $content The content to be displayed.
+     *
+     * @return string The sanitized content.
+     */
+    public static function display_safe_html( $content = '' ) {
+        $allowed_html = [
+            'a'      => [
+                'href'   => [],
+                'target' => [],
+            ],
+            'strong' => [],
+            'em'     => [],
+            'br'     => [],
+            'p'      => [],
+        ];
+
+        return wp_kses( $content, $allowed_html );
+    }
+
+    /**
      * Check if the user can access the content.
      *
      * @param int $post_id Post ID.

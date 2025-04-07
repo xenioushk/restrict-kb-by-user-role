@@ -49,9 +49,9 @@ class PostAccessCb {
 
 			if ( $bkb_rkb_allow_post_access_status != 1 ) {
 
-				if ( isset( $options['bkb_rkb_single_kb_msg'] ) && $options['bkb_rkb_single_kb_msg'] != '' ) {
+				if ( isset( $options['bkb_rkb_single_kb_msg'] ) && ! empty( $options['bkb_rkb_single_kb_msg'] ) ) {
 
-						$allowed_message = sanitize_textarea_field( $options['bkb_rkb_single_kb_msg'] );
+						$allowed_message = RkbHelpers::display_safe_html( $options['bkb_rkb_single_kb_msg'] );
 				} else {
 						$bkb_wp_login_url = home_url() . '/wp-admin/';
 						$allowed_message  = __( 'Sorry, you are not allowed to access the knowledgebase content.', 'bkb_rkb' ) .
