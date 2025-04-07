@@ -82,6 +82,7 @@ class Init {
 		$classes = [
 			// Base\Enqueue::class,
 			// Base\CustomTheme::class,
+			Base\IncludePluginFiles::class,
 			Base\AdminEnqueue::class,
 			// Base\FrontendInlineJs::class,
 			// Base\PluginUpdate::class,

@@ -26,10 +26,6 @@ class BKB_Rkb_Admin {
         $post_types           = $this->baseController->plugin_post_type;
         $this->includedFiles();
 
-        // Add the meta box.
-
-        require_once plugin_dir_path( __FILE__ ) . 'includes/class-rkb-addon-meta-box.php';
-
         // Quick & Bulk Edit Section.
 
         add_action( 'bulk_edit_custom_box', [ $this, 'bkb_rkb_product_quick_edit_box' ], 10, 2 );
