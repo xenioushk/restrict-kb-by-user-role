@@ -30,12 +30,6 @@ class BKB_Rkb_Admin {
 
         require_once plugin_dir_path( __FILE__ ) . 'includes/class-rkb-addon-meta-box.php';
 
-        // After manage text we need to add "custom_post_type" value.
-        add_filter( 'manage_' . $post_types . '_posts_columns', [ $this, 'bkb_rkb_custom_column_header' ] );
-
-        // After manage text we need to add "custom_post_type" value.
-        add_action( 'manage_' . $post_types . '_posts_custom_column', [ $this, 'bkb_rkb_display_custom_column' ], 10, 1 );
-
         // Quick & Bulk Edit Section.
 
         add_action( 'bulk_edit_custom_box', [ $this, 'bkb_rkb_product_quick_edit_box' ], 10, 2 );
@@ -43,9 +37,6 @@ class BKB_Rkb_Admin {
 
         add_action( 'save_post', [ $this, 'bkb_rkb_product_save_quick_edit_data' ], 10, 2 );
         add_action( 'wp_ajax_manage_wp_posts_using_bulk_edit_rkb', [ $this, 'manage_wp_posts_using_bulk_edit_rkb' ] );
-
-        // Load public-facing style sheet and JavaScript.
-        add_action( 'admin_enqueue_scripts', [ $this, 'bkb_rkb_admin_enqueue_scripts' ] );
 
         /*------------------------------  Custom Filter For User Role---------------------------------*/
         add_action( 'restrict_manage_posts', [ $this, 'bkb_rkb_admin_top_user_role_filter' ], 11 );
@@ -86,62 +77,7 @@ class BKB_Rkb_Admin {
     }
 
 
-    public function bkb_rkb_admin_enqueue_scripts( $hook ) {
-        wp_enqueue_style( $this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/styles/admin.css', false, BKB_Rkb::VERSION );
-        wp_enqueue_script( $this->plugin_slug . '-admin', BKBRKB_PLUGIN_DIR . 'assets/scripts/admin.js', [ 'jquery' ], BKB_Rkb::VERSION, true );
-        wp_localize_script(
-            $this->plugin_slug . '-admin',
-            'BkbmRkburAdminData',
-            [
-                'product_id'   => BKBRKB_ADDON_CC_ID,
-                'installation' => get_option( BKBRKB_ADDON_INSTALLATION_TAG ),
-            ]
-        );
-    }
 
-    function bkb_rkb_custom_column_header( $columns ) {
-
-        return array_merge(
-            $columns,
-            [
-                'bkb_rkb_status' => __( 'Access', 'bkb_rkb' ),
-            ]
-        );
-    }
-
-    function bkb_rkb_display_custom_column( $column ) {
-
-        // Add A Custom Image Size For Admin Panel.
-
-        global $post;
-
-        switch ( $column ) {
-
-            case 'bkb_rkb_status':
-                $bkb_rkb_status = ( get_post_meta( $post->ID, 'bkb_rkb_status', true ) == 1 ) ? 1 : 0;
-
-                // FAQ Display Status In Text.
-
-                $bkb_rkb_status_in_text = ( $bkb_rkb_status == 1 ) ? '<span class="dashicons dashicons-lock"></span>' : '<span class="dashicons dashicons-unlock"></span>';
-
-                $bkb_rkb_user_roles_access_text = __( 'All types of user can view this KB content', 'bkb_rkb' );
-
-                if ( $bkb_rkb_status == 1 ) {
-                    $bkb_rkb_user_roles_titles = get_post_meta( $post->ID, 'bkb_rkb_user_roles', true );
-
-                    if ( ! is_array( $bkb_rkb_user_roles_titles ) ) {
-                        $bkb_rkb_user_roles_access_text = __( 'only administrator can access this KB', 'bkb_rkb' );
-                    } else {
-                        $bkb_roles                      = implode( ', ', $bkb_rkb_user_roles_titles );
-                        $bkb_rkb_user_roles_access_text = __( 'only', 'bkb_rkb' ) . ' ' . $bkb_roles . ' ' . __( 'can access this KB', 'bkb_rkb' );
-                    }
-                }
-
-                echo '<div id="bkb_rkb_status-' . $post->ID . '" data-status_code="' . $bkb_rkb_status . '" title="' . ucwords( $bkb_rkb_user_roles_access_text ) . '">' . $bkb_rkb_status_in_text . '</div>';
-
-                break;
-        }
-    }
 
     /*== Bulk & Quick Edit Section == */
 

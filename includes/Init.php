@@ -82,11 +82,11 @@ class Init {
 		$classes = [
 			// Base\Enqueue::class,
 			// Base\CustomTheme::class,
-			// Base\AdminEnqueue::class,
+			Base\AdminEnqueue::class,
 			// Base\FrontendInlineJs::class,
 			// Base\PluginUpdate::class,
 			Base\Language::class,
-			// Base\AdminAjaxHandlers::class,
+			Base\AdminAjaxHandlers::class,
 
 		];
 		return $classes;
@@ -125,10 +125,8 @@ class Init {
 	private static function get_filter_classes() {
 
 		$classes = [
-			// Controllers\Filters\AtfcTab::class,
-			// Controllers\Admin\ProductColumns::class,
-			// Controllers\Admin\MediaColumns::class,
-			// Controllers\Admin\MediaMetaFields::class,
+			Controllers\Filters\RKBFIlters::class,
+			Controllers\Admin\CustomColumns::class,
 		];
 		return $classes;
 	}

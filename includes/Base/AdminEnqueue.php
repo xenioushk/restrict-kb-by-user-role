@@ -1,10 +1,10 @@
 <?php
-namespace KAFWPB\Base;
+namespace BKBRKB\Base;
 
 /**
  * Class for registering the plugin admin scripts and styles.
  *
- * @package KAFWPB
+ * @package BKBRKB
  */
 class AdminEnqueue {
 
@@ -21,7 +21,7 @@ class AdminEnqueue {
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
-		$this->admin_script_slug = 'bkb_vc-admin';
+		$this->admin_script_slug = 'bkb_rkb-admin';
 	}
 
 	/**
@@ -38,16 +38,16 @@ class AdminEnqueue {
 
         wp_enqueue_style(
             $this->admin_script_slug,
-            KAFWPB_PLUGIN_STYLES_ASSETS_DIR . 'admin.css',
+            BKBRKB_PLUGIN_STYLES_ASSETS_DIR . 'admin.css',
             [],
-            KAFWPB_PLUGIN_VERSION
+            BKBRKB_PLUGIN_VERSION
         );
 
         wp_enqueue_script(
             $this->admin_script_slug,
-            KAFWPB_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
-            [ 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'jquery-ui-sortable' ],
-            KAFWPB_PLUGIN_VERSION, true
+            BKBRKB_PLUGIN_SCRIPTS_ASSETS_DIR . 'admin.js',
+            [ 'jquery' ],
+            BKBRKB_PLUGIN_VERSION, true
         );
 
 				$this->get_the_localization_texts();
@@ -60,15 +60,15 @@ class AdminEnqueue {
 
 		// Localize scripts.
 		// Frontend.
-		// Access data: KAFWPBAdminData.version
+		// Access data: BkbmRkburAdminData.version
 		wp_localize_script(
             $this->admin_script_slug,
-            'KAFWPBAdminData',
+            'BkbmRkburAdminData',
             [
-				'version'      => KAFWPB_PLUGIN_VERSION,
+				'version'      => BKBRKB_PLUGIN_VERSION,
 				'ajaxurl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
-				'product_id'   => KAFWPB_PRODUCT_ID,
-				'installation' => get_option( KAFWPB_PRODUCT_INSTALLATION_TAG ),
+				'product_id'   => BKBRKB_PRODUCT_ID,
+				'installation' => get_option( BKBRKB_PRODUCT_INSTALLATION_TAG ),
 			]
 		);
 	}
