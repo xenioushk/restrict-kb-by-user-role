@@ -27,6 +27,7 @@ class Init {
 			'helpers' => self::get_helper_classes(),
 			'base'    => self::get_base_classes(),
 			'meta'    => self::get_meta_classes(),
+			'filters' => self::get_filter_classes(),
 			// 'notices'  => self::get_notices_classes(),
 			// 'wpbakery' => self::get_wpbakery_classes(),
 		];
@@ -99,6 +100,7 @@ class Init {
 	private static function get_helper_classes() {
 		$classes = [
 			Helpers\PluginConstants::class,
+			Helpers\RkbHelpers::class,
 		];
 		return $classes;
 	}
@@ -115,6 +117,21 @@ class Init {
 		return $classes;
 	}
 
+	/**
+	 * Get Filter classes.
+	 *
+	 * @return array
+	 */
+	private static function get_filter_classes() {
+
+		$classes = [
+			// Controllers\Filters\AtfcTab::class,
+			// Controllers\Admin\ProductColumns::class,
+			// Controllers\Admin\MediaColumns::class,
+			// Controllers\Admin\MediaMetaFields::class,
+		];
+		return $classes;
+	}
 
 	/**
 	 * Get WPBakery classes.

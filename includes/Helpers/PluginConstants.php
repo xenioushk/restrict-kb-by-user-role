@@ -9,6 +9,21 @@ namespace BKBRKB\Helpers;
 class PluginConstants {
 
 		/**
+         * Static property to hold plugin options.
+         *
+         * @var array
+         */
+	public static $plugin_options = [];
+
+	/**
+	 * Initialize the plugin options.
+	 */
+	public static function init() {
+
+		self::$plugin_options = get_option( 'bkb_options' );
+	}
+
+		/**
          * Get the relative path to the plugin root.
          *
          * @return string
@@ -33,6 +48,7 @@ class PluginConstants {
 	 * Register the plugin constants.
 	 */
 	public static function register() {
+		self::init();
 		self::set_paths_constants();
 		self::set_base_constants();
 		self::set_assets_constants();

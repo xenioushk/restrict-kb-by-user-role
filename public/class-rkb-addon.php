@@ -21,7 +21,7 @@ class BKB_Rkb {
         if ( class_exists( 'BwlKbManager\\Init' ) && BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION > '1.0.5' ) {
             $this->baseController = new BaseController();
             $this->include_files();
-            add_filter( 'bkb_rkb_post_access', [ $this, 'bkb_rkb_post_access' ] );
+            // add_filter( 'bkb_rkb_post_access', [ $this, 'bkb_rkb_post_access' ] );
             add_filter( 'the_content', [ $this, 'bkb_rkb_modify_taxonomy_exceprt' ] );
             add_filter( 'custom_rkb_title', [ $this, 'custom_rkb_title' ] );
             add_filter( 'bkb_rkb_query_filter', [ $this, 'bkb_rkb_query_filter' ] );
@@ -309,49 +309,6 @@ class BKB_Rkb {
      * @Edited: 17-11-2015
      * @By: Mahbub
      ***********************************************************/
-    public function bkb_rkb_post_access( $post_id ) {
-
-        $bkb_data = $this->baseController->bkb_data;
-
-        // First we check if global KB access disable status. If global status is 1 then we allow all kind of users
-        // to access all the KB content.
-        if ( isset( $bkb_data['bkb_rkb_global_status'] ) && $bkb_data['bkb_rkb_global_status'] == 1 ) {
-            return 1;
-        }
-
-        // Secondly, if global access disable is false then we need to check each post current access status.
-        // Admin can individually set restriction.
-
-        $bkb_rkb_allow_post_access_message = 1; // Return 1 if user can access the content. Else Return a message.
-
-        $bkb_rkb_status = get_post_meta( $post_id, 'bkb_rkb_status', true );  // Get Access Restriction Staus.
-
-        // So, if status is 1 then we need to check user compatibility to access current post.
-
-        if ( $bkb_rkb_status == 1 ) {
-
-            // Checking user compatibility in here.
-            $bkb_rkb_allow_post_access_status = bkb_user_can_access_content( $post_id );
-
-            // If post access status return 1 then user can access the page other wise we display a notification message.
-            // Admin can set custom message for access restriction.
-
-            if ( $bkb_rkb_allow_post_access_status != 1 ) {
-
-                if ( isset( $bkb_data['bkb_rkb_single_kb_msg'] ) && $bkb_data['bkb_rkb_single_kb_msg'] != '' ) {
-
-                    $bkb_rkb_allow_post_access_message = sanitize_textarea_field( $bkb_data['bkb_rkb_single_kb_msg'] );
-                } else {
-                    $bkb_wp_login_url                  = home_url() . '/wp-admin/';
-                    $bkb_rkb_allow_post_access_message = __( 'Sorry, you are not allowed to access the knowledgebase content.', 'bkb_rkb' ) .
-                        ' <a href=' . $bkb_wp_login_url . ' target="_blank">' . __( 'Log In', 'bkb_rkb' ) . '</a> ' . __( 'required to access the content', 'bkb_rkb' );
-                }
-            }
-        }
-
-        return $bkb_rkb_allow_post_access_message;
-    }
-
     public function bkb_rkb_blog_query_filter( $bkb_kbdabp_excluded_posts ) {
 
         $bkb_data = $this->baseController->bkb_data;
