@@ -9,49 +9,56 @@ namespace BKBRKB\Helpers;
 class RkbHelpers {
 
 
+    /**
+     * Check if the user can access the content.
+     *
+     * @param int $post_id Post ID.
+     *
+     * @return int 1 if user can access, 0 otherwise.
+     */
     public static function can_user_access( $post_id ) {
 
-        // Initially, we set allow disable for current user.
-        $bkb_rkb_allow_post_access = 0;
+        // Check if the post ID is valid.
+        if ( empty( $post_id ) ) {
+            return 0;
+        }
 
         // Get All List of Allowed User set by the admin.
-        $bkb_rkb_user_roles = get_post_meta( $post_id, 'bkb_rkb_user_roles', true );
+        $allowed_roles = get_post_meta( $post_id, 'bkb_rkb_user_roles', true );
 
-        $defaultRole = 'administrator';
+        $default_role = 'administrator';
 
-        if ( ! empty( $bkb_rkb_user_roles ) ) {
+        if ( ! empty( $allowed_roles ) ) {
 
-            $isAdminRoleExists = array_search( $defaultRole, $bkb_rkb_user_roles, true );
+            $isAdminRoleExists = array_search( $default_role, $allowed_roles, true );
 
             if ( $isAdminRoleExists === false ) {
-                $bkb_rkb_user_roles[] = $defaultRole;
+                $allowed_roles[] = $default_role;
             }
 		} else {
-            $bkb_rkb_user_roles = [ $defaultRole ];
+            $allowed_roles = [ $default_role ];
         }
 
         // Get current user info.
-        $current_user = wp_get_current_user();
-        // If current user not logged in then we set user role as blank.
-        $current_user_role = '';
-
-        // Extracting Current User Role Information.
-        if ( isset( $current_user->roles[0] ) ) {
-            $current_user_role = $current_user->roles[0];
-        }
+        $current_user      = wp_get_current_user();
+        $current_user_role = ( isset( $current_user->roles[0] ) ) ? $current_user->roles[0] : '';
 
         // Checking user role can able to access the content or not.
         // If user role can access the content then we change post access value in to 1 and return it.
 
-        if ( $current_user_role != '' && in_array( $current_user_role, $bkb_rkb_user_roles ) ) {
+        $access_status = ( ! empty( $current_user_role ) && in_array( $current_user_role, $allowed_roles, true ) ) ? 1 : 0;
 
-            $bkb_rkb_allow_post_access = 1;
-        }
-
-        return $bkb_rkb_allow_post_access;
+        return $access_status;
     }
 
 
+    /**
+     * Get excluded posts based on the taxonomy type.
+     *
+     * @param string $bkb_tax_type The taxonomy type (category or tags).
+     *
+     * @return array The array of excluded posts.
+     */
     public static function bkb_rkb_get_excluded_posts( $bkb_tax_type = 'category' ) {
 
         global $bkb_data;

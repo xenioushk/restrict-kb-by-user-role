@@ -31,11 +31,11 @@ class MetaInfo {
 			// nt = 1 // new tab.
 			$additional_links = [
 				[
-					'title' => esc_html__( 'Options Panel', 'bwl_ptmn' ),
+					'title' => esc_html__( 'Options Panel', 'bkb_rkb' ),
 					'url'   => admin_url( 'edit.php?post_type=bwl_kb&page=edit.php%3Fpost_type%3Dbwl_kb_options_panel#bkb_rkb_settings' ), //phpcs:ignore
 				],
 				[
-					'title' => esc_html__( 'Docs', 'bwl_ptmn' ),
+					'title' => esc_html__( 'Docs', 'bkb_rkb' ),
 					'url'   => 'https://xenioushk.github.io/docs-plugins-addon/bkbm-addon/rkb/index.html',
 					'nt'    => 1,
 				],

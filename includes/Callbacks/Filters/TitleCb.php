@@ -13,24 +13,21 @@ use BKBRKB\Helpers\PluginConstants;
  */
 class TitleCb {
 
-
+	/**
+	 * Modify the post title.
+	 *
+	 * @param string $title The post title.
+	 * @return string
+	 */
 	public function modify( $title ) {
 
 		global $post;
 
-		$bkb_data = $this->baseController->bkb_data;
+		$options = PluginConstants::$plugin_options;
 
-		$bkb_rkb_status = get_post_meta( $post->ID, 'bkb_rkb_status', true );
-
-		if ( $bkb_rkb_status == 1 ) {
-				$bkb_display_lock_icon = " <i class='fa fa-lock'></i>";
-		} else {
-				$bkb_display_lock_icon = '';
-		}
-
-		if ( isset( $bkb_data['bkb_rkb_lock_icon'] ) && $bkb_data['bkb_rkb_lock_icon'] == 1 ) {
-				$bkb_display_lock_icon = '';
-		}
+		$bkb_rkb_status        = intval( get_post_meta( $post->ID, 'bkb_rkb_status', true ) );
+		$bkb_display_lock_icon = ( $bkb_rkb_status === 1 && empty( $options['bkb_rkb_lock_icon'] ) )
+																					? " <i class='fa fa-lock'></i>" : ''; //phpcs:ignore
 
 		return $title . $bkb_display_lock_icon;
 	}
