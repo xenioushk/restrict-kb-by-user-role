@@ -31,15 +31,15 @@ class PostAccessCb {
 
 		// Secondly, if global access disable is false then we need to check each post current access status.
 		// Admin can individually set restriction.
-
-		$allowed_message = 1; // Return 1 if user can access the content. Else Return a message.
+		// Return 1 if user can access the content. Else Return a message.
+		$allowed_message = 1;
 
 		// Get Access Restriction Staus.
-		$bkb_rkb_status = get_post_meta( $post_id, 'bkb_rkb_status', true );
+		$bkb_rkb_status = intval( get_post_meta( $post_id, 'bkb_rkb_status', true ) );
 
 		// So, if status is 1 then we need to check user compatibility to access current post.
 
-		if ( $bkb_rkb_status == 1 ) {
+		if ( $bkb_rkb_status === 1 ) {
 
 				// Checking user compatibility in here.
 				$bkb_rkb_allow_post_access_status = RkbHelpers::can_user_access( $post_id );
