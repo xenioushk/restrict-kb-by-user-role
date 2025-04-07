@@ -101,13 +101,6 @@ define( 'BKBRKB_ADDON_CC_ID', '13722991' ); // Plugin codecanyon Id.
 define( 'BKBRKB_DIR', plugin_dir_path( __FILE__ ) );
 define( 'BKBRKB_PLUGIN_DIR', plugins_url() . '/restrict-kb-by-user-role/' );
 
-require_once plugin_dir_path( __FILE__ ) . 'public/class-rkb-addon.php';
-
-register_activation_hook( __FILE__, [ 'BKB_Rkb', 'activate' ] );
-register_deactivation_hook( __FILE__, [ 'BKB_Rkb', 'deactivate' ] );
-
-add_action( 'plugins_loaded', [ 'BKB_Rkb', 'get_instance' ] );
-
 if ( is_admin() ) {
 
     include_once plugin_dir_path( __FILE__ ) . 'admin/class-rkb-addon-admin.php';
