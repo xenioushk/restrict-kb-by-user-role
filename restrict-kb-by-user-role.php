@@ -78,8 +78,7 @@ function init_bkbrkb() {
     }
 
     if ( class_exists( 'BKBRKB\\Init' ) ) {
-
-        // Init::register_services();
+        Init::register_services();
     }
 }
 

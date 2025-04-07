@@ -24,11 +24,11 @@ class Init {
 		$services = [];
 
 		$service_classes = [
-			'helpers'  => self::get_helper_classes(),
-			'base'     => self::get_base_classes(),
-			'meta'     => self::get_meta_classes(),
-			'notices'  => self::get_notices_classes(),
-			'wpbakery' => self::get_wpbakery_classes(),
+			'helpers' => self::get_helper_classes(),
+			// 'base'     => self::get_base_classes(),
+			// 'meta'     => self::get_meta_classes(),
+			// 'notices'  => self::get_notices_classes(),
+			// 'wpbakery' => self::get_wpbakery_classes(),
 		];
 
 		foreach ( $service_classes as $service_class ) {
