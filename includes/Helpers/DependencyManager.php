@@ -55,7 +55,7 @@ class DependencyManager {
 	private static function set_urls() {
 		self::$bkbm_url         = "<strong><a href='https://1.envato.market/bkbm-wp' target='_blank'>BWL Knowledge Base Manager</a></strong>";
 		self::$bkbm_license_url = "<strong><a href='" . admin_url( 'edit.php?post_type=bwl_kb&page=bkb-license' ) . "'>BWL Knowledge Base Manager license</a></strong>";
-		self::$addon_title      = '<strong>KB Addon For WPBakery Page Builder</strong>';
+		self::$addon_title      = '<strong>Restrict KB Access by User Role Addon</strong>';
 	}
 
 	/**

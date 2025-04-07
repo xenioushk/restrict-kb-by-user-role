@@ -83,26 +83,3 @@ function init_bkbrkb() {
 }
 
 add_action( 'init', __NAMESPACE__ . '\\init_bkbrkb' );
-
-
-return;
-
-// If this file is called directly, abort.
-
-
-define( 'BKBRKB_PARENT_PLUGIN_INSTALLED_VERSION', get_option( 'bwl_kb_plugin_version' ) );
-define( 'BKBRKB_ADDON_PARENT_PLUGIN_TITLE', 'BWL Knowledge Base Manager Plugin' );
-define( 'BKBRKB_ADDON_TITLE', 'Restrict KB Access by User Role' );
-define( 'BKBRKB_PARENT_PLUGIN_REQUIRED_VERSION', '1.4.2' ); // change plugin required version in here.
-define( 'BKBRKB_ADDON_CURRENT_VERSION', '1.1.2' ); // change plugin current version in here.
-define( 'BKBRKB_ADDON_INSTALLATION_TAG', 'bkbm_rkbur_installation_' . str_replace( '.', '_', BKBRKB_ADDON_CURRENT_VERSION ) );
-define( 'BKBRKB_ADDON_UPDATER_SLUG', plugin_basename( __FILE__ ) ); // change plugin current version in here.
-define( 'BKBRKB_ADDON_CC_ID', '13722991' ); // Plugin codecanyon Id.
-define( 'BKBRKB_DIR', plugin_dir_path( __FILE__ ) );
-define( 'BKBRKB_PLUGIN_DIR', plugins_url() . '/restrict-kb-by-user-role/' );
-
-if ( is_admin() ) {
-
-    include_once plugin_dir_path( __FILE__ ) . 'admin/class-rkb-addon-admin.php';
-    add_action( 'plugins_loaded', [ 'BKB_Rkb_Admin', 'get_instance' ] );
-}
