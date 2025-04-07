@@ -4,7 +4,7 @@
   "type": "project",
   "autoload": {
     "psr-4": {
-      "RESKB\\": "includes/"
+      "BKBRKB\\": "includes/"
     }
   },
   "require": {
