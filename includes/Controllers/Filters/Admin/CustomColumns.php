@@ -1,5 +1,5 @@
 <?php
-namespace BKBRKB\Controllers\Admin;
+namespace BKBRKB\Controllers\Filters\Admin;
 
 /**
  * Custom Product Columns

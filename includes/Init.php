@@ -27,9 +27,9 @@ class Init {
 			'helpers' => self::get_helper_classes(),
 			'base'    => self::get_base_classes(),
 			'meta'    => self::get_meta_classes(),
+			'actions' => self::get_action_classes(),
 			'filters' => self::get_filter_classes(),
 			// 'notices'  => self::get_notices_classes(),
-			// 'wpbakery' => self::get_wpbakery_classes(),
 		];
 
 		foreach ( $service_classes as $service_class ) {
@@ -85,7 +85,7 @@ class Init {
 			Base\IncludePluginFiles::class,
 			Base\AdminEnqueue::class,
 			// Base\FrontendInlineJs::class,
-			// Base\PluginUpdate::class,
+			Base\PluginUpdate::class,
 			Base\Language::class,
 			Base\AdminAjaxHandlers::class,
 
@@ -118,6 +118,21 @@ class Init {
 		return $classes;
 	}
 
+
+	/**
+	 * Get Action classes.
+	 *
+	 * @return array
+	 */
+	private static function get_action_classes() {
+
+		$classes = [
+			Controllers\Actions\Admin\QuickBulkEdit::class,
+			Controllers\Actions\Admin\ManagePosts::class,
+		];
+		return $classes;
+	}
+
 	/**
 	 * Get Filter classes.
 	 *
@@ -126,34 +141,11 @@ class Init {
 	private static function get_filter_classes() {
 
 		$classes = [
-			Controllers\Filters\RKBFIlters::class,
-			Controllers\Admin\CustomColumns::class,
+			Controllers\Filters\RKBFilters::class,
+			Controllers\Filters\Admin\RKBFilters::class,
+			Controllers\Filters\Admin\CustomColumns::class,
 		];
 		return $classes;
-	}
-
-	/**
-	 * Get WPBakery classes.
-	 *
-	 * @return array
-	 */
-    private static function get_wpbakery_classes() {
-
-			$classes = [
-				Controllers\Shortcodes\AddonShortcodes::class,
-				Controllers\WPBakery\Shortcodes\ShortcodeParams::class,
-				Controllers\WPBakery\Elements\Tags::class,
-				Controllers\WPBakery\Elements\AskQuestion::class,
-				Controllers\WPBakery\Elements\Category::class,
-				Controllers\WPBakery\Elements\Counter::class,
-				Controllers\WPBakery\Elements\ExternalForm::class,
-				Controllers\WPBakery\Elements\Posts::class,
-				Controllers\WPBakery\Elements\SearchBox::class,
-				Controllers\WPBakery\Elements\Tabs::class,
-				Controllers\WPBakery\Elements\Tags::class,
-			];
-
-			return $classes;
 	}
 
 	/**

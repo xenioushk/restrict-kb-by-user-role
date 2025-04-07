@@ -1,10 +1,10 @@
 <?php
-namespace KAFWPB\Base;
+namespace BKBRKB\Base;
 
 /**
  * Class for registering the plugin scripts and styles.
  *
- * @package KAFWPB
+ * @package BKBRKB
  */
 class Enqueue {
 
@@ -21,7 +21,7 @@ class Enqueue {
 	public function __construct() {
 		// Frontend script slug.
 		// This is required to hook the loclization texts.
-		$this->frontend_script_slug = 'bkb_vc-frontend';
+		$this->frontend_script_slug = 'bkb_rkb-frontend';
 	}
 
 	/**
@@ -39,9 +39,9 @@ class Enqueue {
 
 		wp_enqueue_style(
             $this->frontend_script_slug,
-            KAFWPB_PLUGIN_STYLES_ASSETS_DIR . 'frontend.css',
+            BKBRKB_PLUGIN_STYLES_ASSETS_DIR . 'frontend.css',
             [],
-            KAFWPB_PLUGIN_VERSION
+            BKBRKB_PLUGIN_VERSION
 		);
 	}
 
@@ -51,27 +51,12 @@ class Enqueue {
 	public function get_the_scripts() {
 
 		// Register JS
-		wp_enqueue_script(
-            'counterup',
-            KAFWPB_PLUGIN_LIBS_DIR . 'jquery-counterup/jquery.counterup.min.js',
-            [ 'jquery' ],
-            KAFWPB_PLUGIN_VERSION,
-            true
-        );
-
-		wp_enqueue_script(
-            'waypoints',
-            KAFWPB_PLUGIN_LIBS_DIR . 'jquery-waypoint/waypoints.min.js',
-            [ 'jquery' ],
-            KAFWPB_PLUGIN_VERSION,
-            true
-        );
 
 		wp_enqueue_script(
             $this->frontend_script_slug,
-            KAFWPB_PLUGIN_SCRIPTS_ASSETS_DIR . 'frontend.js',
+            BKBRKB_PLUGIN_SCRIPTS_ASSETS_DIR . 'frontend.js',
             [ 'jquery' ],
-            KAFWPB_PLUGIN_VERSION,
+            BKBRKB_PLUGIN_VERSION,
             true
         );
 
@@ -91,7 +76,7 @@ class Enqueue {
             $this->frontend_script_slug,
             'KafwpbFrontendData',
             [
-				'version' => KAFWPB_PLUGIN_VERSION,
+				'version' => BKBRKB_PLUGIN_VERSION,
             ]
 		);
 	}

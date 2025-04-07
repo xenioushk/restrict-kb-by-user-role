@@ -1,5 +1,5 @@
 <?php
-namespace KAFWPB\Base;
+namespace BKBRKB\Base;
 
 use Xenioushk\BwlPluginApi\Api\PluginUpdate\WpAutoUpdater;
 
@@ -7,7 +7,7 @@ use Xenioushk\BwlPluginApi\Api\PluginUpdate\WpAutoUpdater;
  * Class for plugin update.
  *
  * @since: 1.1.0
- * @package KAFWPB
+ * @package BKBRKB
  */
 class PluginUpdate {
 
@@ -22,6 +22,6 @@ class PluginUpdate {
      * Check for the plugin update.
      */
 	public function check_for_the_update() {
-		new WpAutoUpdater( KAFWPB_PLUGIN_VERSION, KAFWPB_PLUGIN_UPDATER_URL, KAFWPB_PLUGIN_UPDATER_SLUG );
+		new WpAutoUpdater( BKBRKB_PLUGIN_VERSION, BKBRKB_PLUGIN_UPDATER_URL, BKBRKB_PLUGIN_UPDATER_SLUG );
 	}
 }

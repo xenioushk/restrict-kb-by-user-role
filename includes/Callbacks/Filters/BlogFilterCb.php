@@ -1,7 +1,6 @@
 <?php
 namespace BKBRKB\Callbacks\Filters;
 
-use BKBRKB\Helpers\RkbHelpers;
 use BKBRKB\Helpers\PluginConstants;
 
 use WP_Query;

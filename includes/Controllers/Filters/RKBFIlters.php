@@ -10,12 +10,12 @@ use BKBRKB\Callbacks\Filters\ModifyTaxonomyCb;
 use Xenioushk\BwlPluginApi\Api\Filters\FiltersApi;
 
 /**
- * Class for registering the atfc tab.
+ * Class for registering the frontend filters.
  *
  * @since: 1.1.5
  * @package BKBRKB
  */
-class RKBFIlters {
+class RKBFilters {
 
     /**
 	 * Register filters.

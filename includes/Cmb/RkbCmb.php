@@ -1,11 +1,11 @@
 <?php
-
-if ( ! defined( 'WPINC' ) ) {
-    die;
-}
-
 use BwlKbManager\Api\CmbMetaBoxApi;
 
+/**
+ * Class for creating a custom meta box.
+ *
+ * @package BKBRKB
+ */
 class RkbCmb {
 
     /**
@@ -20,7 +20,7 @@ class RkbCmb {
         $allAvailableRoles = $wp_roles->roles;
         $filteredRoles     = [];
 
-        if ( sizeof( $allAvailableRoles ) > 0 ) :
+        if ( count( $allAvailableRoles ) > 0 ) :
             foreach ( $allAvailableRoles as $role_id => $role_info ) :
                 $filteredRoles[ $role_id ] = $role_info['name'];
             endforeach;
