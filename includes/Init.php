@@ -25,7 +25,7 @@ class Init {
 
 		$service_classes = [
 			'helpers' => self::get_helper_classes(),
-			// 'base'     => self::get_base_classes(),
+			'base'    => self::get_base_classes(),
 			// 'meta'     => self::get_meta_classes(),
 			// 'notices'  => self::get_notices_classes(),
 			// 'wpbakery' => self::get_wpbakery_classes(),
@@ -79,13 +79,13 @@ class Init {
 	 */
 	private static function get_base_classes() {
 		$classes = [
-			Base\Enqueue::class,
-			Base\CustomTheme::class,
-			Base\AdminEnqueue::class,
-			Base\FrontendInlineJs::class,
-			Base\PluginUpdate::class,
+			// Base\Enqueue::class,
+			// Base\CustomTheme::class,
+			// Base\AdminEnqueue::class,
+			// Base\FrontendInlineJs::class,
+			// Base\PluginUpdate::class,
 			Base\Language::class,
-			Base\AdminAjaxHandlers::class,
+			// Base\AdminAjaxHandlers::class,
 
 		];
 		return $classes;
