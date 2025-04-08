@@ -30,6 +30,7 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 
 // Load the plugin constants
 if ( file_exists( __DIR__ . '/includes/Helpers/DependencyManager.php' ) ) {
+    require_once __DIR__ . '/includes/Helpers/DependencyManager.php';
     Helpers\DependencyManager::register();
 }
 
