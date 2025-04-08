@@ -33,7 +33,7 @@ class RKBFilters {
         $post_access_cb     = new PostAccessCb();
         $modify_taxonomy_cb = new ModifyTaxonomyCb();
 
-        // Filters.
+        // All filters.
         $filters = [
             [
                 'tag'      => 'bkb_rkb_post_access',

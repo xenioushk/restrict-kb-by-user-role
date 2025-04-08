@@ -82,6 +82,19 @@ You can easily manage restriction from option panel. You can temporarily disable
 
 ![Options panel](https://xenioushk.github.io/docs-plugins-addon/bkbm-addon/rkb/screenshot/03_option_panel_output.png)
 
+## Frontend Filters
+
+This table provides an overview of the frontend filter tags.
+
+| **Filter Tag**                | **Description**                                                                  |
+| ----------------------------- | -------------------------------------------------------------------------------- |
+| `bkb_rkb_post_access`         | Filters the access status of a Knowledge Base post.                              |
+| `the_content`                 | Modifies the content of a Knowledge Base post based on taxonomy or restrictions. |
+| `custom_rkb_title`            | Modifies the title of a Knowledge Base post.                                     |
+| `bkb_rkb_query_filter`        | Filters the query for restricted Knowledge Base posts.                           |
+| `bkb_rkb_blog_query_filter`   | Filters the query for restricted posts displayed in blog layouts.                |
+| `bkb_rkb_search_query_filter` | Filters the query for restricted posts in search results.                        |
+
 ## Change log
 
 - [Change log](https://xenioushk.github.io/docs-plugins-addon/bkbm-addon/rkb/index.html#changelog)
