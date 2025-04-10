@@ -12,6 +12,7 @@
     "make-pot": "wp i18n make-pot . languages/restrict-kb-by-user-role.pot --slug=restrict-kb-by-user-role --domain=bkb_rkb --exclude=node_modules,src",
     "make-json": "wp i18n make-json languages/ --no-purge",
     "lint:php": "vendor/bin/phpcs",
+    "lint:phpn": "vendor/bin/phpcs -n",
     "lint:php:fix": "vendor/bin/phpcbf"
   },
   "author": "Md Mahbub Alam Khan <hkhan.cse@gmail.com> (https://bluewindlab.net/)",

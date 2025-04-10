@@ -26,7 +26,9 @@ class QueryFilterCb {
 		// If Restriction plugin is activated but the user want to allow all KB contents for all user then
 		// Plugin will not modify Meta query arguments.
 
-		if ( isset( $options['bkb_rkb_global_status'] ) && $options['bkb_rkb_global_status'] == 1 ) {
+		$bkb_rkb_global_status = $options['bkb_rkb_global_status'] ?? 0;
+
+		if ( ! $bkb_rkb_global_status ) {
 				return $args;
 		}
 
@@ -42,14 +44,16 @@ class QueryFilterCb {
 		}
 
 		// Initially we will not display restricted KB items with non-restricted items.
-		$bkb_rkb_all_kb_display_status = 0;
+		// $kb_display_status = 0;
 
-		if ( isset( $options['bkb_rkb_all_kb_display_status'] ) && $options['bkb_rkb_all_kb_display_status'] == 'on' ) {
-				// Allow to display all restricted items.
-				$bkb_rkb_all_kb_display_status = 1;
-		}
+		// if ( isset( $options['bkb_rkb_all_kb_display_status'] ) && $options['bkb_rkb_all_kb_display_status'] == 'on' ) {
+		// Allow to display all restricted items.
+		// $kb_display_status = 1;
+		// }
 
-		if ( $current_user_role == '' && $bkb_rkb_all_kb_display_status == 0 ) {
+		$kb_display_status = intval( $options['bkb_rkb_all_kb_display_status'] ?? 0 );
+
+		if ( empty( $current_user_role ) && $kb_display_status === 0 ) {
 
 				// Hide Restricted Posts.
 				// Only non logged in users can see open KB posts.
@@ -66,7 +70,7 @@ class QueryFilterCb {
 						'value' => 0,
 					],
 				];
-		} elseif ( $current_user_role != '' && $current_user_role != 'administrator' && $bkb_rkb_all_kb_display_status == 0 ) {
+		} elseif ( ! empty( $current_user_role ) && $current_user_role !== 'administrator' && $kb_display_status === 0 ) {
 
 				// This area for checking logged in users capability.
 
@@ -87,7 +91,6 @@ class QueryFilterCb {
 						'value' => 0,
 					],
 				];
-		} else {
 		}
 
 		return $args;

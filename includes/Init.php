@@ -1,5 +1,4 @@
 <?php
-
 namespace BKBRKB;
 
 /**
@@ -29,7 +28,6 @@ class Init {
 			'meta'    => self::get_meta_classes(),
 			'actions' => self::get_action_classes(),
 			'filters' => self::get_filter_classes(),
-			// 'notices'  => self::get_notices_classes(),
 		];
 
 		foreach ( $service_classes as $service_class ) {
@@ -80,15 +78,11 @@ class Init {
 	 */
 	private static function get_base_classes() {
 		$classes = [
-			// Base\Enqueue::class,
-			// Base\CustomTheme::class,
 			Base\IncludePluginFiles::class,
 			Base\AdminEnqueue::class,
-			// Base\FrontendInlineJs::class,
 			Base\PluginUpdate::class,
 			Base\Language::class,
 			Base\AdminAjaxHandlers::class,
-
 		];
 		return $classes;
 	}
@@ -144,18 +138,6 @@ class Init {
 			Controllers\Filters\RKBFilters::class,
 			Controllers\Filters\Admin\RKBFilters::class,
 			Controllers\Filters\Admin\CustomColumns::class,
-		];
-		return $classes;
-	}
-
-	/**
-	 * Get Notices classes.
-	 *
-	 * @return array
-	 */
-	private static function get_notices_classes() {
-		$classes = [
-			Controllers\Notices\PluginNoticesAjaxHandler::class,
 		];
 		return $classes;
 	}
