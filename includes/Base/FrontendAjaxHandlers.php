@@ -1,13 +1,13 @@
 <?php
 
-namespace KAFWPB\Base;
+namespace BKBRKB\Base;
 
 use Xenioushk\BwlPluginApi\Api\AjaxHandlers\AjaxHandlersApi;
 
 /**
  * Class for frontend ajax handlers.
  *
- * @package KAFWPB
+ * @package BKBRKB
  * @since: 1.1.0
  * @author: Mahbub Alam Khan
  */

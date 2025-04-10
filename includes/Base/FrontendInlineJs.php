@@ -1,11 +1,11 @@
 <?php
 
-namespace KAFWPB\Base;
+namespace BKBRKB\Base;
 
 /**
  * Class for plucin frontend inline js.
  *
- * @package KAFWPB
+ * @package BKBRKB
  * @since: 1.1.0
  * @auther: Mahbub Alam Khan
  */

@@ -29,25 +29,25 @@ class RkbCmb {
         $custom_fields = [
 
             'meta_box_id'      => 'cmb_bkb_rkb', // Unique id of meta box.
-            'meta_box_heading' => __( 'KB Access Restriction', 'bkb_rkb' ), // That text will be show in meta box head section.
+            'meta_box_heading' => esc_html__( 'KB Access Restriction', 'bkb_rkb' ), // That text will be show in meta box head section.
             'post_type'        => BKBM_POST_TYPE, // define post type. go to register_post_type method to view post_type name.
             'context'          => 'side',
             'priority'         => 'low',
             'fields'           => [
                 'bkb_rkb_status' => [
-                    'title'         => __( 'Restrict KB content access?', 'bkb_rkb' ),
+                    'title'         => esc_html__( 'Restrict KB content access?', 'bkb_rkb' ),
                     'id'            => 'bkb_rkb_status',
                     'name'          => 'bkb_rkb_status',
                     'type'          => 'select',
                     'value'         => [
-                        '0' => __( 'No', 'bkb_rkb' ),
-                        '1' => __( 'Yes', 'bkb_rkb' ),
+                        '0' => esc_html__( 'No', 'bkb_rkb' ),
+                        '1' => esc_html__( 'Yes', 'bkb_rkb' ),
                     ],
                     'default_value' => 0,
                     'class'         => 'widefat',
                 ],
                 'bkb_rkb_user_roles' => [
-                    'title'         => __( 'Select user roles you want to give access: ', 'bkb_rkb' ),
+                    'title'         => esc_html__( 'Select user roles you want to give access: ', 'bkb_rkb' ),
                     'id'            => 'bkb_rkb_user_roles',
                     'name'          => 'bkb_rkb_user_roles',
                     'type'          => 'multiple_checkbox',
@@ -55,7 +55,7 @@ class RkbCmb {
                     'default_value' => 1,
                     'class'         => 'widefat',
                     'disable_item'  => 'administrator',
-                    'disable_note'  => __( 'Administrator always able to access all the KB items', 'bkb_rkb' ),
+                    'disable_note'  => esc_html__( 'Administrator always able to access all the KB items', 'bkb_rkb' ),
                 ],
             ],
         ];
