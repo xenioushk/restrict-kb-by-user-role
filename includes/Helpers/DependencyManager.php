@@ -62,7 +62,7 @@ class DependencyManager {
 	 * Set the plugin dependency constants.
 	 */
 	private static function set_dependency_constants() {
-		define( 'BKBRKB_MIN_BKBM_VERSION', '1.5.8' );
+		define( 'BKBRKB_MIN_BKBM_VERSION', '1.5.7' );
 		define( 'BKBRKB_MIN_PHP_VERSION', '7.0' );
 	}
 
