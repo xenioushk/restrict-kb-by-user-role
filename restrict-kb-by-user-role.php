@@ -5,7 +5,7 @@
  * Plugin URI:      https://1.envato.market/bkbm-wp
  * Description:     Restrict KB Addon allows you to limit access of KB content according to user role.
  * Author:            Mahbub Alam Khan
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author URI:      https://bluewindlab.net
  * WP Requires at least: 6.0+
  * Text Domain:    bkb_rkb
@@ -33,8 +33,8 @@ if ( file_exists( __DIR__ . '/includes/Helpers/DependencyManager.php' ) ) {
     Helpers\DependencyManager::register();
 }
 
-use KAFWPB\Base\Activate;
-use KAFWPB\Base\Deactivate;
+use BKBRKB\Base\Activate;
+use BKBRKB\Base\Deactivate;
 
 /**
  * Function to handle the activation of the plugin.

@@ -1,6 +1,6 @@
 {
   "name": "restrict-kb-by-user-role",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "Restrict KB Addon allows you to limit access of KB content according to user role. ",
   "main": "index.js",
   "scripts": {
