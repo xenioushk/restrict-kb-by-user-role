@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Restrict KB Access by User Role - Knowledgebase Addon plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Restrict KB Access by User Role - Knowledgebase Addon 1.1.3\n"
+"Project-Id-Version: Restrict KB Access by User Role - Knowledgebase Addon 2.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/restrict-kb-by-user-role\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-07T20:57:15+00:00\n"
+"POT-Creation-Date: 2025-04-17T21:21:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: bkb_rkb\n"
@@ -107,4 +107,27 @@ msgstr ""
 
 #: includes/Controllers/Filters/Admin/CustomColumns.php:60
 msgid "can access this KB"
+msgstr ""
+
+#: includes/Controllers/PluginMeta/MetaInfo.php:34
+msgid "Options Panel"
+msgstr ""
+
+#: includes/Controllers/PluginMeta/MetaInfo.php:38
+msgid "Docs"
+msgstr ""
+
+#. translators: 1: Plugin name, 2: Addon title, 3: Current version, 4: Minimum required version
+#: includes/Helpers/DependencyManager.php:128
+msgid "The %2$s requires %1$s %4$s or higher. You are using %3$s"
+msgstr ""
+
+#. translators: 1: Plugin name, 2: Addon title
+#: includes/Helpers/DependencyManager.php:147
+msgid "Please install and activate the %1$s plugin to use %2$s."
+msgstr ""
+
+#. translators: 1: Plugin activation link, 2: Addon title
+#: includes/Helpers/DependencyManager.php:164
+msgid "Please Activate the %1$s to use the %2$s."
 msgstr ""
