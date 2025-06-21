@@ -1,6 +1,6 @@
 variables:
-  BUILD_DIR: /home/gitlab-runner/builds/$CI_RUNNER_SHORT_TOKEN/0/plugin-addons/restrict-kb-access-by-user-role # Adjusted
-  PLUGIN_DIR: bkbm/wp-content/plugins/restrict-kb-access-by-user-role/ # Adjusted
+  BUILD_DIR: /home/gitlab-runner/builds/$CI_RUNNER_SHORT_TOKEN/0/plugin-addons/restrict-kb-by-user-role # Adjusted
+  PLUGIN_DIR: bkbm/wp-content/plugins/restrict-kb-by-user-role/ # Adjusted
   SDEPLOY_DIR: /home/$SHOST_ID/public_html/bwl_staging/wpplugins/$PLUGIN_DIR # Adjusted
   PDEPLOY_DIR: /home/$PHOST_ID/public_html/public_html/projects/wpplugin/$PLUGIN_DIR # Adjusted
 
